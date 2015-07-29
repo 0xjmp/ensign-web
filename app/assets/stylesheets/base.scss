@@ -1,0 +1,281 @@
+// Variables
+$dark-gray:	#222;
+$green:		#5fc999;
+$orange:		#ffac53;
+$pink:		#fd74ab;
+$blue:		#64cff5;
+
+// Mixins
+@mixin text-3d($color){
+	text-shadow: 1px 1px 0 mix($color,black,80%), 2px 2px 0 mix($color,black,80%), 3px 3px 0 mix($color,black,80%), 4px 4px 0 mix($color,black,80%), 5px 5px 0 mix($color,black,80%);
+}
+
+@mixin div-3d($color){
+	box-shadow: 1px 1px 0 0 mix($color,black,80%), 2px 2px 0 0 mix($color,black,80%), 3px 3px 0 0 mix($color,black,80%), 4px 4px 0 0 mix($color,black,80%), 5px 5px 0 0 mix($color,black,80%);
+}
+
+// Extendable classes
+.no-margin {
+	margin: 0;
+	padding: 0;
+}
+
+.absolute {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+// Base styles
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	color: $dark-gray;
+	@extend .no-margin;
+	// Prevent scrolling
+	overflow: hidden;
+	position: fixed;
+}
+
+.layout-holder {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	width: 640px;
+	height: 1200px;
+	border: 1px solid #ccc;
+	margin: 40px auto;
+	
+	.layout {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.card {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 80%;
+	transition: all .5s ease-in-out;
+	overflow: hidden;
+	
+	&.gone {
+		right: 100%;
+	}
+	
+	&.current {
+		right: 0;
+	}
+	
+	&.next {
+		right: -100%;
+	}
+}
+
+.profile-picture, .skills {
+	width: 50%;
+	height: 30%;
+	float: left;
+	overflow: hidden;
+	
+	&.sean {
+		background: url('../images/sean.jpg') no-repeat center center;
+		background-size: cover;
+	}
+	
+	&.jake {
+		background: url('../images/jake.jpg') no-repeat center center;
+		background-size: cover;
+	}
+}
+
+// Skills bar charts
+.skills {
+	background: $dark-gray;
+	
+	ul {
+		height: 100%;
+		@extend .no-margin;
+		list-style: none;
+	}
+	
+	li {
+		position: relative;
+		height: 25%;
+		width: 100%;
+		font-size: .75em;
+		font-weight: 600;
+		
+		.text {
+			@extend .absolute;
+			left: 10px;
+			top: 50%;
+			color: white;
+			line-height: 0;
+		}
+		
+		.bar {
+			@extend .absolute;
+			height: 100%;
+			transition: all 1s ease-in-out;
+			
+			&.zero {
+				width: 0 !important;
+			}
+		}
+		
+		&:nth-child(1) {
+			background: mix($green,black,85%);
+			
+			.text {
+				@include text-3d($green);
+			}
+			
+			.bar {
+				background: $green;
+				@include div-3d($green);
+				width: 85%;
+			}
+		}
+		
+		&:nth-child(2) {
+			background: mix($orange,black,85%);
+			
+			.text {
+				@include text-3d($orange);
+			}
+			
+			.bar {
+				background: $orange;
+				@include text-3d($orange);
+				@include div-3d($orange);
+				width: 75%;
+			}
+		}
+		
+		&:nth-child(3) {
+			background: mix($pink,black,85%);
+			
+			.text {
+				@include text-3d($pink);
+			}
+			
+			.bar {
+				background: $pink;
+				@include text-3d($pink);
+				@include div-3d($pink);
+				width: 58%;
+			}
+		}
+		
+		&:nth-child(4) {
+			background: mix($blue,black,85%);
+			
+			.text {
+				@include text-3d($blue);
+			}
+			
+			.bar {
+				background: $blue;
+				@include text-3d($blue);
+				@include div-3d($blue);
+				width: 34%;
+			}
+		}
+	}
+}
+
+.user-details {
+	padding: 10px 15px 15px;
+	width: 100%;
+	height: 40%;
+	
+	h1 {
+		margin: 0;
+		font-size: 2em;
+	}
+	
+	.location {
+		margin-top: 0;
+		font-size: 1em;
+		color: #aaa;
+		
+		i {
+			margin-right: 10px;
+		}
+	}
+	
+	.social-icon {
+	    display: inline-block;
+	    width: 40px;
+	    height: 40px;
+	    border-radius: 50%;
+	    background-color: $blue;
+	    margin: 0 10px 15px 0;
+	    line-height: 40px;
+	    text-align: center;
+	    font-size: 24px;
+	    color: white;
+	}
+	
+	ul {
+		font-size: 1em;
+		line-height: 1.8em;
+		margin: 0;
+		padding-left: 0;
+		
+		li {
+			margin-left: 1em;
+		}
+	}
+}
+
+.interest-buttons {
+	width: 100%;
+	height: 20%;
+	position: absolute;
+	bottom: 0;
+	
+	button {
+		border: none;
+		float: left;
+		width: 50%;
+		height: 100%;
+		color: white;
+		font-size: 60px;
+		cursor: pointer;
+		outline: none !important;
+		transition: all .2s ease-in-out;
+	}
+	
+	.no {
+		background: $pink;
+		@include text-3d($pink);
+		
+		&:active {
+			text-shadow: none;
+			background: mix($pink,black,85%);
+		}
+	}
+	
+	.yes {
+		background: $green;
+		@include text-3d($green);
+		
+		&:active {
+			text-shadow: none;
+			background: mix($green,black,85%);
+		}
+	}
+}
