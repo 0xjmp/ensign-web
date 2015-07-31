@@ -11,17 +11,14 @@
 // about supported directives.
 //
 
-'use strict';
-
 //= require react
 //= require react_ujs
 //= require components
-
 //= require dependencies
+
 //= require api
 //= require_tree ./constants
 //= require_tree ./dispatcher
 //= require_tree ./stores
 //= require_tree ./actions
-//= require_tree ./components
 //= require app

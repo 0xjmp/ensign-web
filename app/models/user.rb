@@ -7,7 +7,18 @@ class User < ActiveRecord::Base
         name: "Candidate ##{i}",
         rate: "$150/hour, $150,000/year",
         education: "Masters in Computer Science",
-        location: "Remote"
+        experience: '12 years professional experience',
+        location: "Remote",
+        profiles: [
+          {
+            type: 'linkedin',
+            src: 'https://linkedin.com/in/jakepeterso'
+          },
+          {
+            type: 'twitter',
+            src: 'https://twitter.com/jakepeterso'
+          }
+        ]
       }
     end
   end

@@ -6,7 +6,10 @@ ruby '2.2.2'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'virtus'
+
 # Use SCSS for stylesheets
+gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -18,6 +21,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'slim'
 gem 'react-rails'
+gem 'font-awesome-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -32,7 +36,9 @@ gem 'unicorn'
 rails_assets_url = 'https://rails-assets.org/'
 source rails_assets_url do
   gem 'rails-assets-flux'
-  gem 'rails-assets-react-router'
+  gem 'rails-assets-jquery'
+  gem 'rails-assets-bean'
+  gem 'rails-assets-object-assign-shim'
 end
 
 group :development, :test do
@@ -44,6 +50,14 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'rspec'
+end
+
+group :development do
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'guard-flow'
 end
 
 group :test do

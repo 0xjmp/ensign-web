@@ -1,11 +1,15 @@
 var Cards = React.createClass({
-  getInitialState: function() {
-    return {
-      cards: []
-    };
+  propTypes: {
+    cards: React.PropTypes.array.isRequired,
+    cardType: React.PropTypes.oneOf(['candidate', 'employer']).isRequired
   },
   render: function() {
-    // TODO: load html template?
-    return <div></div>;
+    return (
+      <ul>
+        {this.props.cards.map(function(card) {
+          return <Card card={card} type={this.props.cardType} />;
+        })}
+      </ul>
+    );
   }
 });

@@ -1,10 +1,17 @@
+"use strict";
+
 var Ensign = React.createClass({
+  getInitialState: function() {
+    return CandidateStore.getState();
+  },
   render: function() {
-    return <CardsWrapper />;
+    return <Cards cards={this.state.candidates} cardType="candidate" />;
   }
 });
 
-React.render(
-  <Ensign />,
-  document.getElementById('ensign')
-);
+window.onload = function() {
+  React.render(
+    <Ensign />,
+    document.getElementById('ensign')
+  );
+}

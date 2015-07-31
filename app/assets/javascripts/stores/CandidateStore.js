@@ -10,10 +10,10 @@ function fetchCandidates() {
   });
 };
 
-var CandidateStore = assign({}, EventEmitter.prototype, {
+var CandidateStore = Object.assign({}, bean, {
 
   emitChange: function() {
-    this.emit(CHANGE_EVENT);
+    this.fire(CHANGE_EVENT);
   },
 
   addChangeListener: function(callback) {
@@ -21,7 +21,7 @@ var CandidateStore = assign({}, EventEmitter.prototype, {
   },
 
   removeChangeListener: function(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
+    this.off(CHANGE_EVENT, callback);
   },
 
   get: function(id) {
@@ -29,7 +29,9 @@ var CandidateStore = assign({}, EventEmitter.prototype, {
   },
 
   getState: function() {
-    return _candidates;
+    return {
+      candidates: _candidates
+    };
   }
 
 });
