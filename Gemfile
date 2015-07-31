@@ -28,6 +28,13 @@ gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+###### FRONT-END ASSETS #######
+rails_assets_url = 'https://rails-assets.org/'
+source rails_assets_url do
+  gem 'rails-assets-flux'
+  gem 'rails-assets-react-router'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -39,3 +46,8 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  source rails_assets_url do
+    gem 'rails-assets-jest'
+  end
+end

@@ -10,8 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require react
-//= require components
-//= require react_ujs
 
+'use strict';
+
+//= require react
+//= require react_ujs
+//= require components
+
+//= require dependencies
+//= require api
+//= require_tree ./constants
+//= require_tree ./dispatcher
+//= require_tree ./stores
+//= require_tree ./actions
+//= require_tree ./components
 //= require app
