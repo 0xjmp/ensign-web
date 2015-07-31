@@ -1,4 +1,4 @@
-// This "class" is actually a factory
+// This "class" works more like a factory method
 var Card = React.createClass({
   propTypes: {
     type: React.PropTypes.oneOf(['candidate', 'employer']),

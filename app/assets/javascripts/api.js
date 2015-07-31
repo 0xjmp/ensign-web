@@ -1,6 +1,6 @@
 var _baseUrl = '/api';
 
-var _responseExtractor = function(response, callback) {
+function _responseExtractor(response, callback) {
   // Attempt to extract the crucial data from api
   if (response.data) {
     callback(response.data);
@@ -9,25 +9,41 @@ var _responseExtractor = function(response, callback) {
   }
 }
 
-var Api = function() {
-  this.headers = {};
-  this.params = {};
+function _errorHandler(error) {
+  switch (error.status) {
+    case 404:
+      break;
+
+    case 500:
+      break;
+
+    case 401:
+      break;
+
+    default:
+      break;
+  }
+}
+
+var ApiRequest = function() {
+  this._params = {};
 };
 
-Api.prototype.setHeaders = function(headers) {
-  this.headers = headers;
+ApiRequest.prototype.setParams = function(params) {
+  this._params = JSON.stringify(params);
   return this;
 };
 
-Api.prototype.setParams = function(params) {
-  this.params = params;
-  return this;
-};
-
-Api.prototype.request = function(method, path, callback) {
+ApiRequest.prototype.request = function(method, path, callback) {
   var url = _baseUrl + path;
-  var request = new XMLHttpRequest();
-  if (callback) request.addEventListener('load', _responseExtractor(response, callback));
-  request.open(method, url, true);
-  request.send();
+  $.ajax({
+    url: _baseUrl + path,
+    type: method.toUpperCase(),
+    data: this._params,
+    contentType: 'application/json; charset=utf-8',
+    success: function(response) {
+      _responseExtractor(response, callback);
+    },
+    error: _errorHandler
+  });
 };
