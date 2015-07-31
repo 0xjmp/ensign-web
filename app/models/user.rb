@@ -1,25 +1,14 @@
 class User < ActiveRecord::Base
 
-  def fetch_candidates
-    candidates = []
-    (0..25).each do |i|
-      candidates << {
-        name: "Candidate ##{i}",
-        rate: "$150/hour, $150,000/year",
-        education: "Masters in Computer Science",
-        experience: '12 years professional experience',
-        location: "Remote",
-        profiles: [
-          {
-            type: 'linkedin',
-            src: 'https://linkedin.com/in/jakepeterso'
-          },
-          {
-            type: 'twitter',
-            src: 'https://twitter.com/jakepeterso'
-          }
-        ]
-      }
+  has_many :profiles, dependent: :destroy
+
+  def hourly_rate
+    sprintf('%.2f' hourly_rate)
+  end
+
+  def name
+    unless first_name.nil? || last_name.nil?
+      first_name + last_name
     end
   end
 
