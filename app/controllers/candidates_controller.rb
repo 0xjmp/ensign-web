@@ -1,7 +1,7 @@
 class CandidatesController < ApplicationController
 
   def index
-    @candidates = current_user.fetch_candidates
+    @candidates = User.find_candidates
   end
 
 end
