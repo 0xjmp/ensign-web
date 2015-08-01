@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
-  has_many :profiles, dependent: :destroy
+  has_many :social_media_profiles, dependent: :destroy
+  has_many :skills
 
   def hourly_rate
     sprintf('%.2f', super)
@@ -18,16 +19,7 @@ class User < ActiveRecord::Base
 
   def self.find_candidates
     # TODO:
-    all.empty? ? [create!({
-      first_name: 'Jake',
-      last_name: 'Peterson',
-      hourly_rate: 150,
-      yearly_rate: 150000,
-      education: 'Stanford',
-      years_experience: 6,
-      location: 'Los Angeles, CA',
-      workplace_preference: 'Remote'
-    })] : all
+    all
   end
 
 end
