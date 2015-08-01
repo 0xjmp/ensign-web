@@ -1,0 +1,1 @@
+json.(candidate, :id, :name, :hourly_rate, :yearly_rate, :education, :years_experience, :location)

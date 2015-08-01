@@ -1,7 +1,8 @@
 class CandidatesController < ApplicationController
 
   def index
-    @candidates = User.find_candidates
+    result = FindCandidates.call
+    render json: result.display
   end
 
 end

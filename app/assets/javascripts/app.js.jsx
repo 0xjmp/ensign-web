@@ -1,6 +1,11 @@
 "use strict";
 
 var Ensign = React.createClass({
+  getDefaultProps: function() {
+    return {
+      cardType: 'candidate'
+    };
+  },
   getInitialState: function() {
     return CandidateStore.getState();
   },
@@ -20,7 +25,7 @@ var Ensign = React.createClass({
     this.setState(CandidateStore.getState());
   },
   render: function() {
-    return <Cards cards={this.state.candidates} cardType="candidate" />;
+    return <Cards cards={this.state.candidates} cardType={this.props.cardType} />;
   }
 });
 

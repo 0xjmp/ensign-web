@@ -10,7 +10,7 @@ var CandidateStore = Object.assign({}, bean, {
   },
 
   addChangeListener: function(callback) {
-    this.on(this, CHANGE_EVENT, null, callback);
+    this.on(this, CHANGE_EVENT, callback);
   },
 
   removeChangeListener: function(callback) {
@@ -34,8 +34,8 @@ CandidateStore.dispatchToken = AppDispatcher.register(function(action) {
 
     case ActionTypes.GET_CANDIDATES:
       var api = new ApiRequest();
-      api.request('get', '/candidates.json', function(candidates) {
-        _candidates = candidates;
+      api.request('get', '/candidates.json', function(response) {
+        _candidates = response.candidates;
         CandidateStore.emitChange();
       });
       break;

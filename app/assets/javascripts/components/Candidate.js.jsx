@@ -4,6 +4,8 @@ var Candidate = React.createClass({
   },
   render: function() {
     var candidate = this.props.candidate;
+    var profiles = candidate.profiles || [];
+    var skills = candidate.skills || [];
     return (
       <div class="card">
         <div class="row">
@@ -11,7 +13,7 @@ var Candidate = React.createClass({
             <img src={candidate.image_url} alt={candidate.name + "'s profile image"} />
           </div>
           <div class="skills">
-            <Skills skills={candidate.skills} />
+            <Skills skills={skills} />
           </div>
         </div>
         <div class="user-details">
@@ -22,8 +24,8 @@ var Candidate = React.createClass({
           </div>
           <div class="row">
             <div class="social-btns-wrapper">
-              {candidate.profiles.map(function(profile) {
-                <SocialButton {...profile} />
+              {profiles.map(function(profile) {
+                  <SocialButton {...profile} />
               })}
             </div>
           </div>

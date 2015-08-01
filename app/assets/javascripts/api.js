@@ -1,15 +1,20 @@
 var _baseUrl = '/api';
 
 function _responseExtractor(response, callback) {
-  // Attempt to extract the crucial data from api
-  if (response.data) {
-    callback(response.data);
+  // Custom data extractor for our back-end
+  if (response.success) {
+    if (response.data) {
+      callback(response.data);
+    } else {
+      callback(response);
+    }
   } else {
-    callback(response);
+    // TODO: There was an error
   }
 }
 
 function _errorHandler(error) {
+  debugger;
   switch (error.status) {
     case 404:
       break;
