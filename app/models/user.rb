@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   def self.find_candidates
     # TODO:
-    all
+    all.includes(:social_media_profiles, :skills)
   end
 
 end
