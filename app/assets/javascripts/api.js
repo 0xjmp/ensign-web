@@ -1,15 +1,11 @@
 var _baseUrl = '/api';
 
-function _responseExtractor(response, callback) {
+function _extractData(response) {
   // Custom data extractor for our back-end
   if (response.success) {
     if (response.data) {
-      callback(response.data);
-    } else {
-      callback(response);
+      return response.data;
     }
-  } else {
-    // TODO: There was an error
   }
 }
 
@@ -47,7 +43,7 @@ ApiRequest.prototype.request = function(method, path, callback) {
     data: this._params,
     contentType: 'application/json; charset=utf-8',
     success: function(response) {
-      _responseExtractor(response, callback);
+      callback(_extractData(response));
     },
     error: _errorHandler
   });

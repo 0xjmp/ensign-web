@@ -33,8 +33,7 @@ CandidateStore.dispatchToken = AppDispatcher.register(function(action) {
   switch (action.type) {
 
     case ActionTypes.GET_CANDIDATES:
-      var api = new ApiRequest();
-      api.request('get', '/candidates.json', function(response) {
+      new ApiRequest().request('get', '/candidates.json', function(response) {
         _candidates = response.candidates;
         CandidateStore.emitChange();
       });

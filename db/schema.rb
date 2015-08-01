@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731211629) do
+ActiveRecord::Schema.define(version: 20150801015544) do
 
   create_table "profiles", force: :cascade do |t|
     t.string "type", null: false
@@ -21,11 +21,12 @@ ActiveRecord::Schema.define(version: 20150731211629) do
   create_table "users", force: :cascade do |t|
     t.string  "first_name"
     t.string  "last_name"
-    t.decimal "hourly_rate",      default: 0.0, null: false
-    t.decimal "yearly_rate",      default: 0.0, null: false
+    t.decimal "hourly_rate",          default: 0.0, null: false
+    t.decimal "yearly_rate",          default: 0.0, null: false
     t.string  "education"
-    t.decimal "years_experience", default: 0.0, null: false
+    t.decimal "years_experience",     default: 0.0, null: false
     t.string  "location"
+    t.string  "workplace_preference"
   end
 
 end

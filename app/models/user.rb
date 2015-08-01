@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
     sprintf('%.2f', super)
   end
 
+  def yearly_rate
+    sprintf('%.2f', super)
+  end
+
   def name
     unless first_name.nil? || last_name.nil?
       first_name + last_name
@@ -19,7 +23,10 @@ class User < ActiveRecord::Base
       last_name: 'Peterson',
       hourly_rate: 150,
       yearly_rate: 150000,
-      education: 'Stanford'
+      education: 'Stanford',
+      years_experience: 6,
+      location: 'Los Angeles, CA',
+      workplace_preference: 'Remote'
     })] : all
   end
 
