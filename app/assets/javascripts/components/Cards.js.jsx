@@ -6,11 +6,14 @@ var Cards = React.createClass({
   render: function() {
     var type = this.props.cardType;
     return (
-      <ul>
-        {this.props.cards.map(function(card) {
-            return <Card key={card.id} card={card} type={type} />;
-        })}
-      </ul>
+      <div>
+        <ul>
+          {this.props.cards.map(function(card) {
+              return <Card key={card.id} card={card} type={type} />;
+          })}
+        </ul>
+        <InterestButtons />
+      </div>
     );
   }
 });

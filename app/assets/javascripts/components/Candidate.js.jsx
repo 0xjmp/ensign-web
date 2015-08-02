@@ -10,11 +10,12 @@ var Candidate = React.createClass({
       <div className="card">
         <img className="profile-picture" src={candidate.image_url} alt={name + "'s profile image"} />
         <Skills skills={candidate.skills} />
-        <div className="clear"></div>
+        <div className="clear" />
         <div className="user-details">
           <h1>{name}</h1>
           <p className="location">
-            <i className="fa fa-map-marker" /> {candidate.location}
+            <i className="fa fa-map-marker" /> 
+            {candidate.location}
           </p>
           {candidate.social_media_profiles.map(function(profile) {
             return <SocialButton {...profile} key={profile.id} />
