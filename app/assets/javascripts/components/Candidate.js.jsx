@@ -8,25 +8,17 @@ var Candidate = React.createClass({
     var rate = '$' + candidate.hourly_rate + '/hour, $' + candidate.yearly_rate + '/year';
     return (
       <div className="card">
-        <div className="row">
-          <div className="profile-picture">
-            <img src={candidate.image_url} alt={name + "'s profile image"} />
-          </div>
-          <Skills skills={candidate.skills} />
-        </div>
+        <img className="profile-picture" src={candidate.image_url} alt={name + "'s profile image"} />
+        <Skills skills={candidate.skills} />
+        <div className="clear"></div>
         <div className="user-details">
           <h1>{name}</h1>
-          <div className="row">
-            <i className="fa fa-2x fa-map-marker social-icon" />
-            <p className="location">{candidate.location}</p>
-          </div>
-          <div className="row">
-            <div className="social-btns-wrapper">
-              {candidate.social_media_profiles.map(function(profile) {
-                return <SocialButton {...profile} key={profile.id} />
-              })}
-            </div>
-          </div>
+          <p className="location">
+            <i className="fa fa-map-marker" /> {candidate.location}
+          </p>
+          {candidate.social_media_profiles.map(function(profile) {
+            return <SocialButton {...profile} key={profile.id} />
+          })}
           <ul>
             <li>{rate}</li>
             <li>{candidate.education}</li>
