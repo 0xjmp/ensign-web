@@ -7,7 +7,7 @@ var Cards = React.createClass({
     var type = this.props.cardType;
     return (
       <div>
-        <ul>
+        <ul className="cards-wrapper">
           {this.props.cards.map(function(card) {
               return <Card key={card.id} card={card} type={type} />;
           })}
