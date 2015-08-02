@@ -6,17 +6,13 @@ var Candidate = React.createClass({
     var candidate = this.props.candidate;
     var name = candidate.first_name + ' ' + candidate.last_name;
     var rate = '$' + candidate.hourly_rate + '/hour, $' + candidate.yearly_rate + '/year';
-    var profiles = candidate.profiles || [];
-    var skills = candidate.skills || [];
     return (
       <div className="card">
         <div className="row">
           <div className="profile-picture">
             <img src={candidate.image_url} alt={name + "'s profile image"} />
           </div>
-          <div className="skills">
-            <Skills skills={skills} />
-          </div>
+          <Skills skills={candidate.skills} />
         </div>
         <div className="user-details">
           <h1>{name}</h1>
@@ -26,8 +22,8 @@ var Candidate = React.createClass({
           </div>
           <div className="row">
             <div className="social-btns-wrapper">
-              {profiles.map(function(profile) {
-                  <SocialButton {...profile} />
+              {candidate.social_media_profiles.map(function(profile) {
+                return <SocialButton {...profile} key={profile.id} />
               })}
             </div>
           </div>
