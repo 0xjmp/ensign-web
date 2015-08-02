@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801021522) do
+ActiveRecord::Schema.define(version: 20150802215910) do
 
   create_table "skills", force: :cascade do |t|
     t.string "title"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150801021522) do
     t.decimal "years_experience",     default: 0.0, null: false
     t.string  "location"
     t.string  "workplace_preference"
+    t.string  "profile_image"
   end
 
 end

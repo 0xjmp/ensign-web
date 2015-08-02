@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :social_media_profiles, dependent: :destroy
   has_and_belongs_to_many :skills
 
+  mount_uploader :profile_image, ProfileImageUploader
+
   def hourly_rate
     sprintf('%.2f', super)
   end

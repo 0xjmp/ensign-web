@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
 skill_file = File.open("data/skills.json")
 skills_json = JSON.parse(skill_file.read)
 skill_file.close
@@ -39,5 +38,8 @@ profiles_json = [
 ]
 profiles_json.each do |profile|
   @jakepeterson.social_media_profiles << SocialMediaProfile.create!(profile)
+end
+File.open('data/jake.jpg') do |f|
+  @jakepeterson.profile_image = f
 end
 @jakepeterson.save!
