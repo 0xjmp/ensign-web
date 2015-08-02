@@ -2,6 +2,7 @@ var ActionTypes = CandidateConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var _candidates = [];
+var _currentCandidate;
 
 var CandidateStore = Object.assign({}, bean, {
 
@@ -17,14 +18,32 @@ var CandidateStore = Object.assign({}, bean, {
     this.off(this, CHANGE_EVENT, callback);
   },
 
-  get: function(id) {
-    return _candidates[id];
-  },
-
   getState: function() {
     return {
-      candidates: _candidates
+      candidates: _candidates,
+      current: _currentCandidate
     };
+  },
+
+  getCurrentCandidate: function() {
+    return _currentCandidate || _currentCandidate = _candidates[0];
+  },
+
+  fetchCandidates: function(page) {
+    new ApiRequest().request('get', '/candidates.json', function(response) {
+      _candidates = response.candidates;
+      this.emitChange();
+    });
+  }
+
+  nextCandidate: function() {
+    var index = _candidates.indexOf(_currentCandidate);
+    if (index < _candidates.length) {
+      _currentCandidate = _candidates[index + 1];
+      this.emitChange();
+    } else {
+      // TODO: Fetch more candidates
+    }
   }
 
 });
@@ -33,10 +52,11 @@ CandidateStore.dispatchToken = AppDispatcher.register(function(action) {
   switch (action.type) {
 
     case ActionTypes.GET_CANDIDATES:
-      new ApiRequest().request('get', '/candidates.json', function(response) {
-        _candidates = response.candidates;
-        CandidateStore.emitChange();
-      });
+      CandidateStore.fetchCandidates();
+      break;
+
+    case ActionTypes.NEXT_CANDIDATE:
+      CandidateStore.nextCandidate(action.result);
       break;
 
     default:

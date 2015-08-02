@@ -2,12 +2,6 @@ var Candidate = React.createClass({
   propTypes: {
     candidate: React.PropTypes.object
   },
-  _loadImageOn: function(imgElement) {
-    debugger;
-  },
-  _clearImageOn: function(imgElement) {
-
-  },
   render: function() {
     var candidate = this.props.candidate;
     var name = candidate.first_name + ' ' + candidate.last_name;
