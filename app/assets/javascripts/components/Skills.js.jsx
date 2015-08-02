@@ -3,11 +3,20 @@ var Skills = React.createClass({
     skills: React.PropTypes.array.isRequired
   },
   render: function() {
+    var skills = this.props.skills;
     return (
       <div className="skills">
         <ul>
-          {this.props.skills.map(function(skill) {
-            <li><span className="bar zero"></span><span className="text">{skill}</span></li>
+          {skills.map(function(skill) {
+            var skillStyles = {
+              width: (skill.id / skills.length) * 100 + "% !important"
+            };
+            return (
+              <li key={skill.id}>
+                <span className="bar zero" style={skillStyles}></span>
+                <span className="text">{skill.title}</span>
+              </li>
+            );
           })}
         </ul>
       </div>
