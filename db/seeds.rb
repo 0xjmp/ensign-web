@@ -25,7 +25,7 @@ end
   location: 'Los Angeles, CA',
   workplace_preference: 'Remote'
 })
-@jakepeterson.skills == Skill.all
+@jakepeterson.skills = Skill.all
 @jakepeterson.social_media_profiles = []
 profiles_json = [
   {
