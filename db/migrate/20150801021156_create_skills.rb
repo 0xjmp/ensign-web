@@ -4,5 +4,10 @@ class CreateSkills < ActiveRecord::Migration
       t.string :title
       t.string :color
     end
+
+    create_table :skills_users do |t|
+      t.belongs_to :skill, index: true
+      t.belongs_to :user, index: true
+    end
   end
 end

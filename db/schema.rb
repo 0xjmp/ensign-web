@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 20150801021522) do
     t.string "color"
   end
 
+  create_table "skills_users", force: :cascade do |t|
+    t.integer "skill_id"
+    t.integer "user_id"
+  end
+
+  add_index "skills_users", ["skill_id"], name: "index_skills_users_on_skill_id"
+  add_index "skills_users", ["user_id"], name: "index_skills_users_on_user_id"
+
   create_table "social_media_profiles", force: :cascade do |t|
     t.string  "social_type", null: false
     t.string  "url",         null: false

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :social_media_profiles, dependent: :destroy
-  has_many :skills
+  has_and_belongs_to_many :skills
 
   def hourly_rate
     sprintf('%.2f', super)
@@ -19,7 +19,11 @@ class User < ActiveRecord::Base
 
   def self.find_candidates
     # TODO:
-    all.includes(:social_media_profiles, :skills)
+    all
+  end
+
+  def as_json(opts=nil)
+    super(include: [:social_media_profiles, :skills])
   end
 
 end
