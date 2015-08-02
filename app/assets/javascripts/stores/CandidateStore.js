@@ -20,27 +20,30 @@ var CandidateStore = Object.assign({}, bean, {
 
   getState: function() {
     return {
-      candidates: _candidates,
-      current: _currentCandidate
+      candidates: _candidates
     };
   },
 
   getCurrentCandidate: function() {
-    return _currentCandidate || _currentCandidate = _candidates[0];
+    if (!_currentCandidate) {
+      _currentCandidate = _candidates[0];
+    }
+
+    return _currentCandidate;
   },
 
   fetchCandidates: function(page) {
     new ApiRequest().request('get', '/candidates.json', function(response) {
       _candidates = response.candidates;
-      this.emitChange();
+      CandidateStore.emitChange();
     });
-  }
+  },
 
   nextCandidate: function() {
     var index = _candidates.indexOf(_currentCandidate);
     if (index < _candidates.length) {
       _currentCandidate = _candidates[index + 1];
-      this.emitChange();
+      CandidateStore.emitChange();
     } else {
       // TODO: Fetch more candidates
     }
