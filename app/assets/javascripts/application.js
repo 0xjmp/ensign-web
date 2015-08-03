@@ -14,7 +14,6 @@
 //= require react
 //= require react_ujs
 //= require components
-//= require dependencies
 
 //= require api
 //= require_tree ./constants

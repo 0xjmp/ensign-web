@@ -28,10 +28,3 @@ var Ensign = React.createClass({
     return <Cards cards={this.state.candidates} cardType={this.props.cardType} />;
   }
 });
-
-window.onload = function() {
-  React.render(
-    <Ensign />,
-    document.getElementById('ensign')
-  );
-}

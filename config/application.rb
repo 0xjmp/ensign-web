@@ -24,7 +24,5 @@ module EnsignWeb
     config.active_record.raise_in_transactional_callbacks = true
 
     config.assets.precompile += %w(dependencies.js)
-
-    config.react.addons = true
   end
 end
