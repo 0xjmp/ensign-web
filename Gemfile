@@ -42,6 +42,7 @@ source rails_assets_url do
   gem 'rails-assets-jquery'
   gem 'rails-assets-bean'
   gem 'rails-assets-object-assign-shim'
+  gem 'rails-assets-swing'
 end
 
 group :development, :test do

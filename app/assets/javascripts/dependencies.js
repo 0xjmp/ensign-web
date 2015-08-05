@@ -3,3 +3,4 @@
 //= require jquery
 //= require bean
 //= require object-assign-shim
+//= require swing

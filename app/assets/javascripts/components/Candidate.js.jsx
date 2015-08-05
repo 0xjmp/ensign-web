@@ -7,14 +7,14 @@ var Candidate = React.createClass({
     var name = candidate.first_name + ' ' + candidate.last_name;
     var rate = '$' + candidate.hourly_rate + '/hour, $' + candidate.yearly_rate + '/year';
     return (
-      <div className="card">
+      <div>
         <img className="profile-picture" src={candidate.profile_image.small.url} alt={name + "'s profile image"} />
         <Skills skills={candidate.skills} />
         <div className="clear" />
         <div className="user-details">
           <h1>{name}</h1>
           <p className="location">
-            <i className="fa fa-map-marker" /> 
+            <i className="fa fa-map-marker" />
             {candidate.location}
           </p>
           {candidate.social_media_profiles.map(function(profile) {

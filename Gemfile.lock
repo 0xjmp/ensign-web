@@ -161,6 +161,7 @@ GEM
     rails-assets-jest (0.4.17)
     rails-assets-jquery (2.1.4)
     rails-assets-object-assign-shim (1.0.0)
+    rails-assets-swing (1.1.4)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.6)
@@ -277,6 +278,7 @@ DEPENDENCIES
   rails-assets-jest!
   rails-assets-jquery!
   rails-assets-object-assign-shim!
+  rails-assets-swing!
   react-rails
   rspec-rails
   sass-rails (~> 5.0)
