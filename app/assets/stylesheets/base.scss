@@ -43,7 +43,6 @@ body {
 	@extend .no-margin;
 	// Prevent scrolling
 	overflow: hidden;
-	position: fixed;
 }
 
 .layout-holder {
@@ -69,6 +68,7 @@ body {
 	height: 80%;
 	transition: all .5s ease-in-out;
 	overflow: hidden;
+	background: white;
 
 	&.gone {
 		right: 100%;
