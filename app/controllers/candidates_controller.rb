@@ -1,7 +1,7 @@
 class CandidatesController < ApplicationController
 
   def index
-    @result = FindCandidates.call
+    @result = FindCandidates.call(params)
     respond_to do |f|
       f.html
       f.json do

@@ -8,15 +8,5 @@
     "years_experience": 6,
     "location": "Los Angeles, CA",
     "workplace_preference": "Remote"
-  },
-  {
-    "first_name": "Myles",
-    "last_name": "O'Connor",
-    "hourly_rate": 150,
-    "yearly_rate": 150000,
-    "education" : "Art School",
-    "years_experience": 10,
-    "location": "Los Angeles, CA",
-    "workplace_preference": "In House"
   }
 ]

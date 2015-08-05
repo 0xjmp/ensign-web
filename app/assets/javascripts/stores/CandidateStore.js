@@ -33,18 +33,22 @@ var CandidateStore = Object.assign({}, bean, {
   },
 
   fetchCandidates: function(page) {
-    new ApiRequest().request('get', '/candidates.json', function(response) {
+    var api = new ApiRequest();
+    api.setParams({page: page});
+    api.request('get', '/candidates.json', function(response) {
       _candidates = response.candidates;
       CandidateStore.emitChange();
     });
   },
 
   nextCandidate: function(result) {
+    if (_candidates.length === 1) {
+      CandidateStore.fetchCandidates(_page++);
+    }
+
     if (_candidates.length > 0) {
       _candidates.splice(-1,1);
       CandidateStore.emitChange();
-    } else {
-      fetchCandidates(_currentPage++);
     }
   }
 
@@ -54,7 +58,7 @@ CandidateStore.dispatchToken = AppDispatcher.register(function(action) {
   switch (action.type) {
 
     case ActionTypes.GET_CANDIDATES:
-      CandidateStore.fetchCandidates();
+      CandidateStore.fetchCandidates(_page = 0);
       break;
 
     case ActionTypes.NEXT_CANDIDATE:

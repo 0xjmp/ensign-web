@@ -21,6 +21,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'virtus'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'kaminari'
 
 gem 'slim'
 gem 'react-rails'
@@ -56,6 +57,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'pry'
+  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -69,6 +71,4 @@ group :test do
   source rails_assets_url do
     gem 'rails-assets-jest'
   end
-
-  gem 'factory_girl_rails'
 end

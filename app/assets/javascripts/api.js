@@ -31,7 +31,7 @@ var ApiRequest = function() {
 };
 
 ApiRequest.prototype.setParams = function(params) {
-  this._params = JSON.stringify(params);
+  this._params = params;
   return this;
 };
 

@@ -17,8 +17,8 @@ end
 user_file = File.open("data/users.json")
 users_json = JSON.parse(user_file.read)
 user_file.close
-users_json.each do |user|
-  user = User.new(user)
+(0..66).each do |i|
+  user = User.new(FactoryGirl.attributes_for(:user))
   user.skills = Skill.all
   user.social_media_profiles = []
   profiles_json = [
@@ -38,4 +38,5 @@ users_json.each do |user|
     user.profile_image = f
   end
   user.save!
+  puts 'Created user: ' + user.name
 end
