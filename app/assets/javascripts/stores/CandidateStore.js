@@ -2,7 +2,7 @@ var ActionTypes = CandidateConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var _candidates = [];
-var _page = 0;
+var _page;
 
 var CandidateStore = Object.assign({}, bean, {
 
@@ -43,7 +43,8 @@ var CandidateStore = Object.assign({}, bean, {
 
   nextCandidate: function(result) {
     if (_candidates.length === 1) {
-      CandidateStore.fetchCandidates(_page++);
+      _page++;
+      CandidateStore.fetchCandidates(_page);
     }
 
     if (_candidates.length > 0) {
@@ -58,7 +59,7 @@ CandidateStore.dispatchToken = AppDispatcher.register(function(action) {
   switch (action.type) {
 
     case ActionTypes.GET_CANDIDATES:
-      CandidateStore.fetchCandidates(_page = 0);
+      CandidateStore.fetchCandidates(_page = 1);
       break;
 
     case ActionTypes.NEXT_CANDIDATE:
