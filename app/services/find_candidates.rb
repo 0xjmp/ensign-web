@@ -5,7 +5,7 @@ class FindCandidates
   attribute :page
 
   def call
-    Success.new(candidates: User.page(page).per(25))
+    Success.new(candidates: User.page(page))
   end
 
 end
