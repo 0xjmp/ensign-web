@@ -2,7 +2,7 @@ var ActionTypes = CandidateConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var _candidates = [];
-var _currentCandidate;
+var _page = 0;
 
 var CandidateStore = Object.assign({}, bean, {
 
@@ -39,13 +39,12 @@ var CandidateStore = Object.assign({}, bean, {
     });
   },
 
-  nextCandidate: function() {
-    var index = _candidates.indexOf(_currentCandidate);
-    if (index < _candidates.length) {
-      _currentCandidate = _candidates[index + 1];
+  nextCandidate: function(result) {
+    if (_candidates.length > 0) {
+      _candidates.splice(-1,1);
       CandidateStore.emitChange();
     } else {
-      // TODO: Fetch more candidates
+      fetchCandidates(_currentPage++);
     }
   }
 
