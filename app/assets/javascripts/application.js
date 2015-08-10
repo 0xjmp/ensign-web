@@ -15,6 +15,10 @@
 //= require react_ujs
 //= require components
 //= require jquery
+//= require flux
+//= require keyMirror
+//= require bean
+//= require object-assign-shim
 //= require swing
 
 //= require api
