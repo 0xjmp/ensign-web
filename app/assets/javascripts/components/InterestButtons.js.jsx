@@ -1,23 +1,15 @@
 var InterestButtons = React.createClass({
-  getInitialState: function() {
-    return {
-      result: null
-    };
-  },
-  handleNoClick: function() {
-    this.setState({result: false});
-    this.handleClick();
-  },
-  handleYesClick: function() {
-    this.setState({result: true});
-    this.handleClick();
-  },
-  handleClick: function() {
+  handleClick: function(result) {
     AppDispatcher.dispatch({
       type: ActionTypes.NEXT_CANDIDATE,
-      result: this.state.result
+      result: result
     });
-    this.setState(this.getInitialState());
+  },
+  handleYesClick: function() {
+    this.handleClick(true);
+  },
+  handleNoClick: function() {
+    this.handleClick(false);
   },
   render: function() {
     return (

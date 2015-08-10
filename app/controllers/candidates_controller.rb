@@ -10,4 +10,8 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def store_results
+    current_user.store_results(params[:results])
+  end
+
 end

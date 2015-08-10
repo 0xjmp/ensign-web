@@ -1,10 +1,17 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   paginates_per 25
 
   has_many :social_media_profiles, dependent: :destroy
   has_and_belongs_to_many :skills
 
   mount_uploader :profile_image, ProfileImageUploader
+
+  has_and_belongs_to_many :rejected, class_name: 'User'
+  has_and_belongs_to_many :accepted, class_name: 'User'
 
   def hourly_rate
     sprintf('%.2f', super)
@@ -20,8 +27,20 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.find_candidates
+    all
+  end
+
   def as_json(opts=nil)
     super(include: [:social_media_profiles, :skills])
+  end
+
+  def store_results(results)
+    results.each do |id, result|
+      user = User.find(id)
+      result ? accepted << user : rejected << user
+    end
+    save!
   end
 
 end

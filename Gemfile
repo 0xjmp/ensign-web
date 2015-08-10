@@ -22,6 +22,7 @@ gem 'virtus'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
+gem 'devise'
 
 gem 'slim'
 gem 'react-rails'

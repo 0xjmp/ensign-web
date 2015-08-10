@@ -1,7 +1,10 @@
 var ActionTypes = CandidateConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
+var _api = new ApiRequest();
+
 var _candidates = [];
+var _results = {};
 var _page;
 
 var CandidateStore = Object.assign({}, bean, {
@@ -32,22 +35,42 @@ var CandidateStore = Object.assign({}, bean, {
     return _currentCandidate;
   },
 
-  fetchCandidates: function(page) {
-    var api = new ApiRequest();
-    api.setParams({page: page});
-    api.request('get', '/candidates.json', function(response) {
+  fetchCandidates: function() {
+    _api.setParams({page: _page});
+    _api.request('get', '/candidates.json', function(response) {
       _candidates = response.candidates;
       CandidateStore.emitChange();
     });
   },
 
+  sendResults: function(callback) {
+    _api.setParams({results: _results});
+    _api.request('post', '/candidates/results.json', function(response) {
+      _results = [];
+      callback();
+    });
+  },
+
   nextCandidate: function(result) {
-    if (_candidates.length === 1) {
-      _page++;
-      CandidateStore.fetchCandidates(_page);
+    if (result !== undefined && _candidates.length > 0) {
+      var id = _candidates[_candidates.length - 1].id;
+      _results[id] = result;
     }
 
-    if (_candidates.length > 0) {
+    if (_candidates.length === 1) {
+      function fetchNext() {
+        _page++;
+        CandidateStore.fetchCandidates(_page);
+      };
+
+      if (Object.keys(_results).length > 0) {
+        CandidateStore.sendResults(function() {
+          fetchNext();
+        });
+      } else {
+        fetchNext();
+      }
+    } else if (_candidates.length > 0) {
       _candidates.splice(-1,1);
       CandidateStore.emitChange();
     }
@@ -59,7 +82,8 @@ CandidateStore.dispatchToken = AppDispatcher.register(function(action) {
   switch (action.type) {
 
     case ActionTypes.GET_CANDIDATES:
-      CandidateStore.fetchCandidates(_page = 1);
+      _page = 1;
+      CandidateStore.fetchCandidates();
       break;
 
     case ActionTypes.NEXT_CANDIDATE:

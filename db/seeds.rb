@@ -19,6 +19,7 @@ users_json = JSON.parse(user_file.read)
 user_file.close
 (0..66).each do |i|
   user = User.new(FactoryGirl.attributes_for(:user))
+  user.email = "email#{i}@gmail.com"
   user.skills = Skill.all
   user.social_media_profiles = []
   profiles_json = [

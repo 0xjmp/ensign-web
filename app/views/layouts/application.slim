@@ -6,4 +6,5 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body
+    = react_component('MessageBanner', {notice: notice, alert: alert}, prerender: true)
     = yield
