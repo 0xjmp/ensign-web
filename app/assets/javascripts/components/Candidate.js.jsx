@@ -22,9 +22,9 @@ var Candidate = React.createClass({
           })}
           <ul>
             <li>{rate}</li>
-            <li>{candidate.education}</li>
+            <li className={candidate.education ? '' : 'hidden'}>{candidate.education}</li>
             <li>{candidate.years_experience} years professional experience</li>
-            <li>Prefers to work {candidate.workplace_preference}</li>
+            <li className={candidate.workplace_preference ? '' : 'hidden'}>Prefers {candidate.workplace_preference} work</li>
           </ul>
         </div>
       </div>

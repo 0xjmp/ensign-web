@@ -11,7 +11,8 @@ FactoryGirl.define do
     yearly_rate 150000
     education 'Ghetto University'
     years_experience 6
-    location 'Remote'
+    location 'Los Angeles, CA'
+    workplace_preference 'Remote'
   end
 
 end

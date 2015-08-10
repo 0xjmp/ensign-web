@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'candidates#index'
+  root to: 'welcome#index'
 
   scope :api, constraints: {format: :json} do
     resources :candidates, only: [:index]
