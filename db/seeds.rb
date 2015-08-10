@@ -20,6 +20,7 @@ user_file.close
 (0..66).each do |i|
   user = User.new(FactoryGirl.attributes_for(:user))
   user.email = "email#{i}@gmail.com"
+  user.password = "OneHell0f@passw0rd"
   user.skills = Skill.all
   user.social_media_profiles = []
   profiles_json = [
