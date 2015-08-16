@@ -5,7 +5,7 @@ var SocialButton = React.createClass({
   },
   render: function() {
     return (
-      <a className="social-icon">
+      <a className="social-icon" href={this.props.url} target="_blank">
         <i className={"fa fa-" + this.props.social_type} />
       </a>
     );
