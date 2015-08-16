@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'faker'
+
 skill_file = File.open("data/skills.json")
 skills_json = JSON.parse(skill_file.read)
 skill_file.close
@@ -14,28 +16,30 @@ skills_json.each do |skill|
   puts "Created skill: #{skill["title"]}"
 end
 
-(0..66).each do |i|
-  user = User.new(FactoryGirl.attributes_for(:user))
-  user.email = "email#{i}@gmail.com"
-  user.password = "OneHell0f@passw0rd"
-  user.skills = Skill.all
-  user.social_media_profiles = []
-  profiles_json = [
-    {
-      "social_type": "linkedin",
-      "url": "https://linkedin.com/in/jakepeterso"
-    },
-    {
-      "social_type": "twitter",
-      "url": "https://twitter.com/_jakepeterson"
-    }
-  ]
-  profiles_json.each do |profile|
-    user.social_media_profiles << SocialMediaProfile.create!(profile)
-  end
-  File.open('data/jake.jpg') do |f|
-    user.profile_image = f
-  end
-  user.save!
-  puts 'Created user: ' + user.name
+num_iters = 150
+
+(1..num_iters).each do |i|
+  user = User.create!({
+    skills: Skill.all,
+    social_media_profiles: [
+      SocialMediaProfile.new({
+        "social_type": "linkedin",
+        "url": Faker::Internet.url('linkedin.com')
+      }),
+      SocialMediaProfile.new({
+        "social_type": "twitter",
+        "url": Faker::Internet.url('twitter.com')
+      })
+    ],
+    profile_image: Faker::Avatar.image,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    hourly_rate: Faker::Number.decimal(2),
+    yearly_rate: Faker::Number.number(6),
+    education: Faker::Company.name, # Faker::University.name
+    years_experience: Faker::Number.between(1, 10),
+    location: "#{Faker::Address.city}, #{Faker::Address.country}",
+    workplace_preference: ['Remote', 'On Site'].sample
+  })
+  puts "Created user: #{user.first_name}"
 end
