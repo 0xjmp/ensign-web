@@ -11,7 +11,12 @@ var Ensign = React.createClass({
   },
   componentDidMount: function() {
     CandidateStore.addChangeListener(this._onChange);
-    this.fetchCandidates();
+    
+    if (!this.props.candidates) {
+	    this.fetchCandidates();
+	  } else {
+		  this.setState({candidates: this.props.candidates});
+	  }
   },
   componentWillUnmount: function() {
     CandidateStore.removeChangeListener(this._onChange);
