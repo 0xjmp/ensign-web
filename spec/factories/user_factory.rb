@@ -1,3 +1,5 @@
+require 'faker'
+
 FactoryGirl.define do
 
   sequence :last_name do |i|
@@ -13,6 +15,8 @@ FactoryGirl.define do
     years_experience 6
     location 'Los Angeles, CA'
     workplace_preference 'Remote'
+    email Faker::Internet.email
+    password Faker::Internet.password
   end
 
 end

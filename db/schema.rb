@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824210509) do
+ActiveRecord::Schema.define(version: 20150824232558) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string  "name"
+    t.string  "headquarters_location"
+    t.float   "headquarters_latitude"
+    t.float   "headquarters_longitude"
+    t.string  "employee_count"
+    t.decimal "funding_amount",         default: 0.0, null: false
+    t.string  "funding_round"
+    t.string  "description"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer "company_id"
+    t.string  "location"
+    t.boolean "location_required", default: false, null: false
+    t.decimal "hourly_rate"
+    t.decimal "annual_rate"
+    t.string  "title"
+    t.integer "team_size"
+    t.string  "description"
+  end
 
   create_table "skills", force: :cascade do |t|
     t.string "title"
@@ -28,10 +50,15 @@ ActiveRecord::Schema.define(version: 20150824210509) do
   add_index "skills_users", ["user_id"], name: "index_skills_users_on_user_id"
 
   create_table "social_media_profiles", force: :cascade do |t|
-    t.string  "social_type", null: false
-    t.string  "url",         null: false
-    t.integer "user_id"
+    t.string   "social_type",     null: false
+    t.string   "url",             null: false
+    t.integer  "socialable_id"
+    t.string   "socialable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "social_media_profiles", ["socialable_type", "socialable_id"], name: "social_media_profiles_on_socialable"
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

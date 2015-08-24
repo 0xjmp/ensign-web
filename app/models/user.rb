@@ -5,13 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   paginates_per 25
 
-  has_many :social_media_profiles, dependent: :destroy
-  has_and_belongs_to_many :skills
-
   mount_uploader :profile_image, ProfileImageUploader
 
+  has_many :social_media_profiles, as: :socialable
+  has_and_belongs_to_many :skills
   has_and_belongs_to_many :rejected, class_name: 'User'
   has_and_belongs_to_many :accepted, class_name: 'User'
+  has_many :employers, class_name: 'Company'
 
   def hourly_rate
     sprintf('%.2f', super)
