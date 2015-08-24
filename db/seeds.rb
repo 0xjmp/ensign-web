@@ -20,6 +20,8 @@ num_iters = 150
 
 (1..num_iters).each do |i|
   user = User.create!({
+    email: Faker::Internet.email,
+    password: Faker::Internet.password,
     skills: Skill.all,
     social_media_profiles: [
       SocialMediaProfile.new({
@@ -39,7 +41,7 @@ num_iters = 150
     education: Faker::Company.name, # Faker::University.name
     years_experience: Faker::Number.between(1, 10),
     location: "#{Faker::Address.city}, #{Faker::Address.country}",
-    workplace_preference: ['Remote', 'On Site'].sample
+    workplace_preference: ['Remote', 'On Site'].sample,
   })
   puts "Created user: #{user.first_name}"
 end
