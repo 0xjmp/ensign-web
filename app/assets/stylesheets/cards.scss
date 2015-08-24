@@ -1,9 +1,13 @@
 .cards-wrapper {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  min-width: $minViewport;
+  max-width: $maxViewport;
+  display: block;
 
   .card {
-    width: 300px;
+    width: $cardWidth;
     margin: auto;
+    overflow: auto;
   }
 }

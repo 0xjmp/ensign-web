@@ -11,9 +11,8 @@
 // about supported directives.
 //
 
-//= require react
-//= require react_ujs
 //= require components
+//= require react_ujs
 //= require jquery
 //= require flux
 //= require keyMirror

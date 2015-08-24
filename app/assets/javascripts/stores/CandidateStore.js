@@ -4,7 +4,7 @@ var CHANGE_EVENT = 'change';
 var _api = new ApiRequest();
 
 var _candidates = [];
-var _results = {};
+var _interests = {}; // TODO: refactor into separate store
 var _page;
 
 var CandidateStore = Object.assign({}, bean, {
@@ -44,9 +44,9 @@ var CandidateStore = Object.assign({}, bean, {
   },
 
   sendResults: function(callback) {
-    _api.setParams({results: _results});
+    _api.setParams({results: _interests});
     _api.request('post', '/candidates/results.json', function(response) {
-      _results = [];
+      _interests = [];
       callback();
     });
   },
@@ -54,7 +54,7 @@ var CandidateStore = Object.assign({}, bean, {
   nextCandidate: function(result) {
     if (result !== undefined && _candidates.length > 0) {
       var id = _candidates[_candidates.length - 1].id;
-      _results[id] = result;
+      _interests[id] = result;
     }
 
     if (_candidates.length === 1) {
@@ -63,7 +63,7 @@ var CandidateStore = Object.assign({}, bean, {
         CandidateStore.fetchCandidates(_page);
       };
 
-      if (Object.keys(_results).length > 0) {
+      if (Object.keys(_interests).length > 0) {
         CandidateStore.sendResults(function() {
           fetchNext();
         });

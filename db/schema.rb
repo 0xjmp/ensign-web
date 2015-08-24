@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810175539) do
+ActiveRecord::Schema.define(version: 20150824210509) do
 
   create_table "skills", force: :cascade do |t|
     t.string "title"
     t.string "color"
+    t.float  "amount", default: 0.0
   end
 
   create_table "skills_users", force: :cascade do |t|
