@@ -9,11 +9,15 @@ var Cards = React.createClass({
       result: result
     });
   },
+  componentDidMount: function() {
+    AppDispatcher.dispatch({
+      type: CardConstants.ActionTypes.SETUP_CARDS
+    });
+  },
   render: function() {
     var props = this.props;
-    var setupCard = this.setupCard;
     return (
-      <div>
+      <div id="main-wrapper">
         <ul className="cards-wrapper">
             {props.cards.map(function(card) {
               return (

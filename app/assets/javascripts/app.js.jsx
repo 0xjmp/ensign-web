@@ -1,27 +1,31 @@
 "use strict";
 
 var Ensign = React.createClass({
+  propTypes: {  
+    candidates: React.PropTypes.array
+  },
   getDefaultProps: function() {
     return {
       cardType: 'candidate'
     };
   },
   getInitialState: function() {
-    return CandidateStore.getState();
+    var state = CandidateStore.getState();
+
+    if (this.props.candidates) {
+      // Sync w/ Flux
+      state.candidates = this.props.candidates;
+    }
+
+    return state;
   },
   componentDidMount: function() {
     CandidateStore.addChangeListener(this._onChange);
-    
-    if (!this.props.candidates) {
-	    this.fetchCandidates();
-	  } else {
-		  this.setState({candidates: this.props.candidates});
-	  }
   },
   componentWillUnmount: function() {
     CandidateStore.removeChangeListener(this._onChange);
   },
-  fetchCandidates: function() {
+  _fetchCandidates: function() {
     AppDispatcher.dispatch({
       type: CandidateConstants.ActionTypes.GET_CANDIDATES
     });
