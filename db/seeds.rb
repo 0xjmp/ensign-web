@@ -22,7 +22,7 @@ end
     email: Faker::Internet.email,
     password: Faker::Internet.password,
     skills: Skill.all,
-    profile_image: Faker::Avatar.image,
+    remote_profile_image_url: Faker::Avatar.image,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     hourly_rate: Faker::Number.decimal(2),
@@ -47,12 +47,13 @@ end
   })
 
   company = Company.create!({
-    name: Faker::Company.name,
+    name: "#{Faker::Company.name}, #{Faker::Company.suffix}",
     headquarters_location: "#{Faker::Address.city}, #{Faker::Address.country}",
     headquarters_latitude: Faker::Address.latitude,
     headquarters_longitude: Faker::Address.longitude,
     employee_count: Faker::Number.between(1, 10000),
     funding_amount: Faker::Number.between(25000, 1000000000),
+    remote_profile_image_url: Faker::Avatar.image,
     funding_round: 'B'
   })
 
@@ -70,7 +71,7 @@ end
 
   puts "Created Company: #{company.name}"
 
-  (0..10).each do |i|
+  (0..5).each do |i|
     job = Job.create!({
       company: company,
       location: "#{Faker::Address.city}, #{Faker::Address.country}",

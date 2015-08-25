@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824232558) do
+ActiveRecord::Schema.define(version: 20150824235504) do
 
   create_table "companies", force: :cascade do |t|
     t.string  "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150824232558) do
     t.decimal "funding_amount",         default: 0.0, null: false
     t.string  "funding_round"
     t.string  "description"
+    t.string  "profile_image"
   end
 
   create_table "jobs", force: :cascade do |t|
