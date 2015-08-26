@@ -49,6 +49,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
   gem 'factory_girl_rails'
+  gem 'teaspoon-jasmine'
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-livereload'

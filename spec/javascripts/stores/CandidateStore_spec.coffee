@@ -1,19 +1,43 @@
 describe 'CandidateStore', ->
 
-  TestUtils = React.addons.TestUtils
-
   it 'should emit change', ->
+    callback = jasmine.createSpy('callback')
+    CandidateStore.addChangeListener callback
+    CandidateStore.emitChange()
 
+    expect(callback).toHaveBeenCalled()
+    return
 
-  it 'should add change listener', ->
+  describe 'getState', ->
+    state = {}
 
-  it 'should remove change listener', ->
+    beforeEach ->
+      state = CandidateStore.getState()
 
-  it 'should get state', ->
+    it 'has candidates', ->
+      expect(state.candidates).toEqual([])
+      return
 
-  it 'should get current candidate', ->
+    it 'has interests', ->
+      expect(state.interests).toEqual({})
+      return
 
-  it 'should fetch candidates', ->
+    it 'has page', ->
+      expect(state.page).toEqual(1)
+      return
+
+  it 'fetches candidates', ->
+    spyOn(_api, 'request')
+    state = CandidateStore.getState()
+    CandidateStore.fetchCandidates()
+
+    waitsFor(->
+      return _api.request.callCount > 0
+    )
+    runs(->
+      expect(state.candidates.length).toBeGreaterThan 0
+    )
+    return
 
   it 'should send results', ->
 

@@ -5,7 +5,7 @@ var _stack = gajus.Swing.Stack();
 _stack.on('throwout', function(element) { 
   AppDispatcher.dispatch({
     type: CandidateConstants.ActionTypes.NEXT_CANDIDATE,
-    result: (element.throwDirection == Card.DIRECTION_RIGHT)
+    result: (element.throwDirection === Card.DIRECTION_RIGHT)
   });
 });
 
