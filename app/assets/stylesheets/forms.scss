@@ -1,0 +1,32 @@
+form {
+	padding: 10px 0 30px;
+		
+	label {
+		font-weight: 400;
+	}
+	
+	button {
+		margin-top: 10px;
+	}
+}
+
+.field {
+	margin-bottom: 15px;
+	
+	input[type="email"], input[type="password"] {
+		padding: 23px 15px;
+		font-size: 18px;
+		border-radius: 36px;
+		border-width: 1px;
+		width: 100%;
+		text-align: center;
+		-webkit-appearance: none;
+		border: 1px solid $light-gray;
+		
+		&:focus {
+			border-color: $col-a;
+			box-shadow: none;
+			outline: none;
+		}
+	}
+}

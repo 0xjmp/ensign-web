@@ -2,9 +2,16 @@ doctype html
 html
   head
     title>EnsignWeb</title>
+    meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport" /
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body
-    = react_component('MessageBanner', {notice: notice, alert: alert}, prerender: true)
-    = yield
+	  .container
+			.row
+				.col-md-12
+					header
+						a href="/"
+							.logo
+					= react_component('MessageBanner', {notice: notice, alert: alert}, prerender: true)
+					= yield
