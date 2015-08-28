@@ -7,8 +7,8 @@ var Company = React.createClass({
 		var company = this.props.job.company;
 		var rate = '$' + job.hourly_rate + '/hour\n$' + job.annual_rate + '/year';
 		return (
-			<div id="company">
-				<div className="company">
+			<div id="candidate">
+				<div className="user">
 					<div className="profile-image-wrapper">
 						<img className="profile-image" src={company.profile_image.small.url} alt={company.name + "'s profile image"} />
 					</div>
@@ -40,7 +40,7 @@ var Company = React.createClass({
 							<img src={"<%= asset_url('icon-company.svg') %>"} alt={company.name + "'s size"} />
 							{(() => {
 								if (company.employee_count > 0) {
-									return <p>{company.employee_count} Employees</p>
+									return <p>{company.employee_count + " Employees"}</p>
 								}
 							})()}
 							<p className="small">{'$' + company.funding_amount + ' ' + company.funding_round + "-Round"}</p>
