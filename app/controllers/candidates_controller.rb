@@ -1,7 +1,11 @@
 class CandidatesController < ApplicationController
 
   def index
-    @result = FindJobs.call(params.merge({user_id: current_user.id}))
+  	if current_user.is_employed?
+    	@result = FindCandidates.call(params)
+    else
+    	redirect_to companies_path
+    end
   end
 
   def store_results

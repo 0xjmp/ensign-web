@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :employers, class_name: 'Company'
 
   def potential_jobs(page=1)
-    Company.includes(:jobs).page(page)
+    Job.includes(:company).page(page)
   end
 
   def hourly_rate

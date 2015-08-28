@@ -26,19 +26,12 @@ describe 'CandidateStore', ->
       expect(state.page).toEqual(1)
       return
 
-  it 'fetches candidates', ->
+  pending 'fetches candidates', ->
     spyOn(_api, 'request')
     state = CandidateStore.getState()
     CandidateStore.fetchCandidates()
-
-    waitsFor(->
-      return _api.request.callCount > 0
-    )
-    runs(->
-      expect(state.candidates.length).toBeGreaterThan 0
-    )
     return
 
-  it 'should send results', ->
+  pending 'should send results', ->
 
-  it 'should get next candidate', ->
+  pending 'should get next candidate', ->

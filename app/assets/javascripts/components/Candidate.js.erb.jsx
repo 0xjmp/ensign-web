@@ -5,7 +5,7 @@ var Candidate = React.createClass({
   render: function() {
     var candidate = this.props.candidate;
     var name = candidate.first_name + ' ' + candidate.last_name;
-    var rate = '$' + candidate.hourly_rate + '/hour - $' + candidate.yearly_rate + '/year';
+    var rate = '$' + candidate.hourly_rate + '/hour\n$' + candidate.yearly_rate + '/year';
     return (
       <div id="candidate">
         <div className="user">

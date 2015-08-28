@@ -80,7 +80,8 @@ end
       annual_rate: Faker::Number.decimal(6),
       title: Faker::Name.title,
       team_size: Faker::Number.between(1, 1000),
-      description: Faker::Lorem.paragraph
+      description: Faker::Lorem.paragraph,
+      workplace_preference: ['Remote', 'On Site'].sample
     })
     puts "Created Job: #{job.title}"
   end

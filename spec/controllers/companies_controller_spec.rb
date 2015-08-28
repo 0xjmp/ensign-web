@@ -17,14 +17,14 @@ RSpec.describe CompaniesController, type: :controller do
         company.save!
       end
       
-      it 'shows candidates page' do 
-        expect(subject).to render_template :index
+      it 'redirects to candidates page' do 
+        expect(subject).to redirect_to candidates_path
       end
     end
 
     context 'while not an employee' do 
-      it 'redirects to candidates page' do 
-        expect(subject).to redirect_to candidates_path
+      it 'shows jobs page' do 
+        expect(subject).to render_template :index
       end
     end
   end

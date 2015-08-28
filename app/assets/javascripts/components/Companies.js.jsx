@@ -1,20 +1,20 @@
 var Companies = React.createClass({
   propTypes: {  
-    companies: React.PropTypes.array
+    jobs: React.PropTypes.array
   },
   render: function() {
     return (
       <div id="main-wrapper">
         <ul className="cards-wrapper">
-            {this.props.companies.map(function(card) {
+            {this.props.jobs.map(function(card) {
               return (
                 <li key={card.id} className="card">
-                  <Company company={card} />
+                  <Company job={card} />
                 </li>
               );
             })}
         </ul>
-        <InterestButtons result={this.getNextCandidate} />
+        <InterestButtons result={this.getNextJob} />
       </div>
     );
   }

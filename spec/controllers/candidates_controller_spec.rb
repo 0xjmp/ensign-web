@@ -1,26 +1,41 @@
 require 'rails_helper'
 
 RSpec.describe CandidatesController, type: :controller do
-	let(:user){create(:user)}
+  let(:user){create(:user)}
 
-	before :each do 
-		sign_in user
-	end
+  before :each do 
+    sign_in user
+  end
   
   context 'while JSON' do 
 
-  	before :each do
-	  	create(:job)
-  	end
-	  
-	  describe '#index' do 
-  		subject { get :index }
+    before :each do
+      create(:job)
+    end
+    
+    describe '#index' do 
+      context 'while user employed' do 
+        before :each do
+          user.employers << create(:company)
+          user.save!
 
-  		it 'shows jobs page' do 
-  			expect(subject).to render_template :index
-	    end
-	  end
+          get :index
+        end
 
-	end
+        it 'shows jobs page' do 
+          expect(subject).to render_template :index
+        end
+      end
+
+      context 'while user is candidate' do 
+        subject {get :index}
+        
+        it 'redirects to companies page' do 
+          expect(response).to redirect_to companies_path
+        end
+      end
+    end
+
+  end
 
 end
