@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824235504) do
+ActiveRecord::Schema.define(version: 20150828000603) do
 
   create_table "companies", force: :cascade do |t|
     t.string  "name"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20150824235504) do
     t.string  "funding_round"
     t.string  "description"
     t.string  "profile_image"
+  end
+
+  create_table "companies_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "company_id"
   end
 
   create_table "jobs", force: :cascade do |t|

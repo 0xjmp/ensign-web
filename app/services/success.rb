@@ -10,9 +10,6 @@ class Success
   end
 
   def display
-    return {
-      success: true,
-      data: @data
-    }
+    return @data
   end
 end

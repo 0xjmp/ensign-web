@@ -8,11 +8,17 @@ RSpec.describe CandidatesController, type: :controller do
 	end
   
   context 'while JSON' do 
+
+  	before :each do
+	  	create(:job)
+  	end
 	  
-	  it '#index' do 
-	    get :index, format: :json
-	    candidates = JSON.parse(response.body)['data']['candidates']
-	    expect(candidates.count).to be > 0
+	  describe '#index' do 
+  		subject { get :index }
+
+  		it 'shows jobs page' do 
+  			expect(subject).to render_template :index
+	    end
 	  end
 
 	end

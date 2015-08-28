@@ -24,4 +24,3 @@
 //= require_tree ./constants
 //= require_tree ./dispatcher
 //= require_tree ./stores
-//= require app

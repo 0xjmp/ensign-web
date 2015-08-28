@@ -9,6 +9,8 @@ RSpec.describe User, type: :model do
   it { is_expected.to respond_to(:employers) }
   it { is_expected.to respond_to(:social_media_profiles) }
   it { is_expected.to respond_to(:profile_image) }
+  it { is_expected.to respond_to(:is_employed?) }
+  it { is_expected.to respond_to(:potential_jobs) }
 
   it 'has name' do 
     expect(user.name).to eq user.first_name + user.last_name

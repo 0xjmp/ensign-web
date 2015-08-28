@@ -1,13 +1,7 @@
 class CandidatesController < ApplicationController
 
   def index
-    @result = FindCandidates.call(params)
-    respond_to do |f|
-      f.html
-      f.json do
-        render json: @result.display
-      end
-    end
+    @result = FindJobs.call(params.merge({user_id: current_user.id}))
   end
 
   def store_results

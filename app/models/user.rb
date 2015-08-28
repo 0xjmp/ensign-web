@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :rejected, class_name: 'User'
   has_and_belongs_to_many :accepted, class_name: 'User'
-  has_many :employers, class_name: 'Company'
+  has_and_belongs_to_many :employers, class_name: 'Company'
+
+  def potential_jobs(page=1)
+    Company.includes(:jobs).page(page)
+  end
 
   def hourly_rate
     sprintf('%.2f', super)
@@ -41,6 +45,10 @@ class User < ActiveRecord::Base
       result ? accepted << user : rejected << user
     end
     save!
+  end
+
+  def is_employed?
+    employers.any?
   end
 
 end
