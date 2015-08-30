@@ -97,7 +97,8 @@ section {
 
 .centered {
 	display: block;
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 }
 
@@ -106,7 +107,7 @@ section {
 }
 
 .alert {
-	background: $col-a;
+	background: mix(red,$col-a,20%);
 	border-radius: 2px;
 	color: white;
 	font-weight: 600;
@@ -128,21 +129,6 @@ ul {
 
 p, ul {
 	line-height: 1.4em;
-}
-
-.huge {
-	color: $dark-gray;
-	text-align: center;
-	font-size: 100px;
-	
-	@media #{$small} {
-		font-size: 10vw;
-	}
-	
-	&.rounded {
-		border-radius: 100vw;
-		padding: 2vw 9vw 2.4vw;
-	}
 }
 
 #main-wrapper {

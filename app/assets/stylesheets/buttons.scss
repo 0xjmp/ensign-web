@@ -34,24 +34,22 @@ a {
 	}
 	
 	&.huge {
+		font-size: 24px;
+		padding: 12px;
 		display: block;
-		margin: 60px auto;
+		margin: 30px auto;
 		color: white;
-		border-radius: 36px;
-		
-		@media #{$small} {
-			margin: 4vw auto;
-		}
+		border-radius: 2px;
 	}
 }
 
 input[type="submit"] {
 	margin-top: 30px;
-	font-size: 10vw;
-	padding: 6px 12px;
+	font-size: 24px;
+	padding: 12px;
 	display: block;
 	width: 100%;
-	border-radius: 36px;
+	border-radius: 2px;
 }
 
 // Social buttons
