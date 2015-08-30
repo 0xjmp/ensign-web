@@ -130,7 +130,6 @@ input[type="submit"] {
 	.no {
 		float: left;
 		background: $red;
-		border-right: 1px solid $med-gray;
 		
 		&:active {
 			background: mix(black, $red, 20%);

@@ -26,6 +26,7 @@ var Company = React.createClass({
 						<li>
 							<img src={"<%= asset_url('icon-money.svg') %>"} alt={company.name + "'s desired Salary"} />
 							<p className="two-lines">{rate}</p>
+							<p className="small">Competitive</p>
 						</li>
 						<li>
 							<img src={"<%= asset_url('icon-title.svg') %>"} alt={job.title} />
