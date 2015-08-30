@@ -25,11 +25,11 @@ var Company = React.createClass({
 					<ul className="details">
 						<li>
 							<img src={"<%= asset_url('icon-money.svg') %>"} alt={company.name + "'s desired Salary"} />
-							<p>{rate}</p>
+							<p className="two-lines">{rate}</p>
 						</li>
 						<li>
 							<img src={"<%= asset_url('icon-title.svg') %>"} alt={job.title} />
-							<p>{job.title}</p>
+							<p className="two-lines">{job.title}</p>
 							{(() => {
 								if (job.team_size > 0) {
 									return <p className="small">Team of {job.team_size}</p>
@@ -40,14 +40,14 @@ var Company = React.createClass({
 							<img src={"<%= asset_url('icon-company.svg') %>"} alt={company.name + "'s size"} />
 							{(() => {
 								if (company.employee_count > 0) {
-									return <p>{company.employee_count + " Employees"}</p>
+									return <p className="two-lines">{company.employee_count + " Employees"}</p>
 								}
 							})()}
 							<p className="small">{'$' + company.funding_amount + ' ' + company.funding_round + "-Round"}</p>
 						</li>
 						<li>
 							<img src={"<%= asset_url('icon-location.svg') %>"} alt={company.name + "'s Location Preference"} />
-							<p>{job.workplace_preference}</p>
+							<p className="two-lines">{job.workplace_preference}</p>
 							<p className="small">{job.location_required ? 'Required' : 'Optional'}</p>
 						</li>
 					</ul>

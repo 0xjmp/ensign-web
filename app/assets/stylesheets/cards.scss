@@ -3,13 +3,14 @@
   @extend .no-margin;
 
   .card {
-    width: $cardWidth;
+    //width: $cardWidth;
     transition: all .5s ease-in-out;
     overflow: hidden;
     background: white;
-    margin: 0 auto;
+    margin: 0 auto 70px;
     position: absolute;
-    top: 0;
+    top: 40px;
+    width: calc(100% - 30px);
 
     &:hover {
       cursor: pointer;
@@ -25,6 +26,41 @@
 
     &.next {
       right: -100%;
+    }
+    
+    $font-size: 18px;
+		$line-height: 1.4;
+		$lines-to-show: 2;
+    
+    .details {
+	    margin-top: 20px;
+	    
+	    .two-lines {
+				display: block; /* Fallback for non-webkit */
+				display: -webkit-box;
+				max-width: 400px;
+				height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+				margin: 0 auto;
+				font-size: $font-size;
+				line-height: $line-height;
+				-webkit-line-clamp: $lines-to-show;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				text-overflow: ellipsis;
+	    }
+	    
+	    .small {
+		    color: $med-gray;
+	    }
+	    
+	    // Divider lines
+	    li:nth-child(2), li:nth-child(4) {
+		    border-left: 1px solid mix($light-gray,white,50%);
+	    }
+	    
+	    li:nth-child(3), li:nth-child(4) {
+		    border-top: 1px solid mix($light-gray,white,50%);
+	    }
     }
   }
 }

@@ -13,12 +13,12 @@ var InterestButtons = React.createClass({
   },
   render: function() {
     return (
-      <div className="interest-buttons">
+      <div className="preference-buttons">
         <button className="no" onClick={this._handleNoClick}>
-          <i className="fa fa-times" />
+          <img src={"<%= asset_url('x.svg') %>"} />
         </button>
         <button className="yes" onClick={this._handleYesClick}>
-          <i className="fa fa-check" />
+          <img src={"<%= asset_url('check.svg') %>"} />
         </button>
       </div>
     );
