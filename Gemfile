@@ -24,7 +24,6 @@ gem 'slim'
 gem 'react-rails'
 gem 'font-awesome-rails'
 gem 'sidekiq'
-gem 'fog'
 gem 'fog-aws'
 
 # Use ActiveModel has_secure_password
