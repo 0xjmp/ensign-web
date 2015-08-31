@@ -52,7 +52,7 @@ build/
 !/log/.keep
 /tmp
 
-/public/assets/**/*
+# /public/assets/**/*
 
 /node_modules
 
