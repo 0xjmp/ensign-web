@@ -1,18 +1,22 @@
 [
   {
     "title": "JavaScript",
-    "color": "5fc999"
+    "color": "5fc999",
+    "amount": 0.25
   },
   {
     "title": "HTML5",
-    "color": "ffac53"
+    "color": "ffac53",
+    "amount": 0.5
   },
   {
     "title": "CSS3",
-    "color": "fd74ab"
+    "color": "fd74ab",
+    "amount": 0.75
   },
   {
     "title": "Ruby on Rails",
-    "color": "64cff5"
+    "color": "64cff5",
+    "amount": 0.99
   }
 ]

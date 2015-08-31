@@ -16,23 +16,12 @@ skills_json.each do |skill|
   puts "Created skill: #{skill["title"]}"
 end
 
-num_iters = 66
+(1..75).each do |i|
 
-(1..num_iters).each do |i|
   user = User.create!({
     email: Faker::Internet.email,
     password: Faker::Internet.password,
     skills: Skill.all,
-    social_media_profiles: [
-      SocialMediaProfile.new({
-        "social_type": "linkedin",
-        "url": Faker::Internet.url('linkedin.com')
-      }),
-      SocialMediaProfile.new({
-        "social_type": "twitter",
-        "url": Faker::Internet.url('twitter.com')
-      })
-    ],
     remote_profile_image_url: Faker::Avatar.image,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -41,7 +30,59 @@ num_iters = 66
     education: Faker::Company.name + ' University', # Faker::University.name
     years_experience: Faker::Number.between(1, 10),
     location: "#{Faker::Address.city}, #{Faker::Address.country}",
-    workplace_preference: ['Remote', 'On Site'].sample
+    workplace_preference: ['Remote', 'On Site'].sample,
   })
   puts "Created user: #{user.first_name}"
+
+  # Create user social media profiles
+  SocialMediaProfile.create!({
+    "social_type": "linkedin",
+    "url": Faker::Internet.url('linkedin.com'),
+    socialable: user
+  })
+  SocialMediaProfile.create!({
+    "social_type": "twitter",
+    "url": Faker::Internet.url('twitter.com'),
+    socialable: user
+  })
+
+  company = Company.create!({
+    name: "#{Faker::Company.name}, #{Faker::Company.suffix}",
+    headquarters_location: "#{Faker::Address.city}, #{Faker::Address.country}",
+    headquarters_latitude: Faker::Address.latitude,
+    headquarters_longitude: Faker::Address.longitude,
+    employee_count: Faker::Number.between(1, 10000),
+    funding_amount: Faker::Number.between(25000, 1000000000),
+    remote_profile_image_url: Faker::Avatar.image,
+    funding_round: 'B'
+  })
+
+  # Create company social media profiles
+  SocialMediaProfile.create!({
+    "social_type": "linkedin",
+    "url": Faker::Internet.url('linkedin.com'),
+    socialable: company
+  })
+  SocialMediaProfile.create!({
+    "social_type": "twitter",
+    "url": Faker::Internet.url('twitter.com'),
+    socialable: company
+  })
+
+  puts "Created Company: #{company.name}"
+
+  (0..5).each do |i|
+    job = Job.create!({
+      company: company,
+      location: "#{Faker::Address.city}, #{Faker::Address.country}",
+      location_required: true,
+      hourly_rate: Faker::Number.decimal(2),
+      annual_rate: Faker::Number.decimal(6),
+      title: Faker::Name.title,
+      team_size: Faker::Number.between(1, 1000),
+      description: Faker::Lorem.paragraph,
+      workplace_preference: ['Remote', 'On Site'].sample
+    })
+    puts "Created Job: #{job.title}"
+  end
 end

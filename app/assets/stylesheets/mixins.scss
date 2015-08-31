@@ -1,0 +1,8 @@
+// Provide image at double size, and call with rendered (half-size) dimensions in px
+@mixin retina-image($x, $y){
+	width: $x;
+	height: $y;
+	background-size: $x $y;
+	background-repeat: no-repeat;
+	background-position: top left;
+}

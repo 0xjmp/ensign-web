@@ -1,0 +1,147 @@
+button:active, button:focus {
+	outline: none;
+}
+
+a {
+	color: $col-a;
+	transition: all .2s ease-in-out;
+	
+	&:hover {
+		color: $col-b;
+	}
+}
+
+.btn, input[type="submit"] {
+	transition: all .2s ease-in-out;
+	background: $col-a;
+	color: white;
+	border: none;
+	
+	&:hover {
+		background: $col-a;
+		color: white;
+	}
+	
+	&:active, &:focus {
+		background: $col-b;
+		outline: none;
+	}
+	
+	&.large {
+		font-size: 24px;
+		border-radius: 60px;
+		padding: 5px 40px;
+	}
+	
+	&.huge {
+		font-size: 24px;
+		padding: 12px;
+		display: block;
+		margin: 30px auto;
+		color: white;
+		border-radius: 2px;
+	}
+}
+
+input[type="submit"] {
+	margin-top: 30px;
+	font-size: 24px;
+	padding: 12px;
+	display: block;
+	width: 100%;
+	border-radius: 2px;
+}
+
+// Social buttons
+.social-icon {
+	  display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #64cff5;
+    border: 1px solid #64cff5;
+    margin: 0 6px 15px 0;
+    line-height: 40px;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    
+    &:hover, &:active, &:focus {
+	    color: #64cff5;
+	    background: white;
+    }
+    
+    &:last-child {
+	    margin-right: 0;
+    }
+    
+    i {
+	    margin: 0 !important;
+    }
+}
+
+// Yes and no buttons
+.preference-buttons {
+	position: fixed;
+	bottom: 150px;
+	right: 100px;
+	
+	@media #{$small} {
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: 0;
+	}
+	
+	.yes, .no {
+		border: none;
+		width: 140px;
+		height: 140px;
+		border-radius: 70px;
+		margin-left: 10px;
+		box-shadow: 0 10px 40px 0 rgba(0,0,0,.2);
+		transition: opacity .3s ease-in-out;
+		opacity: .5;
+		
+		&:hover {
+			opacity: 1;
+		}
+		
+		@media #{$small} {
+			width: 50%;
+			height: auto;
+			padding: 20px 0;
+			border-radius: 0;
+			margin-left: 0;
+			box-shadow: none;
+			opacity: 1;
+		}
+		
+		img {
+			width: auto;
+			height: 40px;
+			
+			@media #{$small} {
+				height: 30px;
+			}
+		}
+	}
+	
+	.no {
+		float: left;
+		background: $red;
+		
+		&:active {
+			background: mix(black, $red, 20%);
+		}
+	}
+	
+	.yes {
+		float: right;
+		background: $green;
+		
+		&:active {
+			background: mix(black, $green, 20%);
+		}
+	}
+}

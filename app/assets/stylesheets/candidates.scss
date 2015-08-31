@@ -1,0 +1,14 @@
+#candidate {	
+
+	.profile-image-wrapper {
+		margin: 20px 0;
+	}
+	 
+	.profile-image {	
+		width: 100px;
+		height: 100px;
+		border-radius: 50px;
+		border: 1px solid mix($light-gray,white,50%);
+	}
+
+}

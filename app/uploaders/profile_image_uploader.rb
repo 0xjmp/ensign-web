@@ -7,10 +7,10 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  unless Rails.env.development?
-    storage :fog
-  else 
+  unless Rails.env.production?
     storage :file
+  else 
+    storage :fog
   end
 
   # Override the directory where uploaded files will be stored.

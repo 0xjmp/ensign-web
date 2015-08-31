@@ -53,3 +53,5 @@ build/
 /tmp
 
 /public/assets/**/*
+
+/node_modules
