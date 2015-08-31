@@ -20,6 +20,12 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+staging: 
+  adapter: postgresql
+  url:  <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
+
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  url:  <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>

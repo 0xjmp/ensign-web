@@ -58,4 +58,9 @@ group :development, :test do
   gem 'guard-teaspoon'
   gem 'faker', '~> 1.4.3'
   gem 'capybara'
+  gem 'dotenv-rails'
+end
+
+group :staging do 
+  gem 'pg'
 end
