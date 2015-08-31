@@ -24,6 +24,8 @@ gem 'slim'
 gem 'react-rails'
 gem 'font-awesome-rails'
 gem 'sidekiq'
+gem 'fog'
+gem 'fog-aws'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -45,11 +47,12 @@ source rails_assets_url do
   gem 'rails-assets-numeral'
 end
 
+gem 'pry'
 group :development, :test do
   gem 'sqlite3'
   gem 'spring'
   gem 'rspec-rails'
-  gem 'pry'
+  
   gem 'factory_girl_rails'
   gem 'teaspoon-jasmine'
   gem 'guard'
