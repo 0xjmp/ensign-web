@@ -19,10 +19,11 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
 gem 'devise'
-
+gem 'puma'
 gem 'slim'
 gem 'react-rails'
 gem 'font-awesome-rails'
+gem 'sidekiq'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
