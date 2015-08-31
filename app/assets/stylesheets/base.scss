@@ -131,6 +131,21 @@ p, ul {
 	line-height: 1.4em;
 }
 
+#header {
+  display: block;
+  @extend .no-margin;
+  height: 75px;
+  width: 100%;
+  position: relative;
+
+  .logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
+
 #main-wrapper {
   min-width: $minViewport;
   max-width: $maxViewport;

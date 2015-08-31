@@ -10,8 +10,9 @@ html
 	  .container
 			.row
 				.col-md-12
-					header
+					header#header
 						a href="/"
 							.logo
 					= react_component('MessageBanner', {notice: notice, alert: alert}, prerender: true)
-					= yield
+					#main-wrapper
+						= yield

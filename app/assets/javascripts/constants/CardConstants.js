@@ -1,7 +1,9 @@
 var CardConstants = {
 
   ActionTypes: keyMirror({
-    SETUP_CARDS: null
+  	GET_CARDS: null,
+    SETUP_CARDS: null,
+    NEXT_CARD: null
   })
 
 };
