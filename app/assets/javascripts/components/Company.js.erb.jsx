@@ -44,7 +44,7 @@ var Company = React.createClass({
 									return <p className="two-lines">{numeral(company.employee_count).format('0,0') + " Employees"}</p>
 								}
 							})()}
-							<p className="small">{'$' + numeral(company.funding_amount).format('0A') + ' ' + company.funding_round + "-Round"}</p>
+							<p className="small">{'$' + numeral(company.funding_amount).format('0a') + ' ' + company.funding_round + "-Round"}</p>
 						</li>
 						<li>
 							<img src={"<%= asset_url('icon-location.svg') %>"} alt={company.name + "'s Location Preference"} />
