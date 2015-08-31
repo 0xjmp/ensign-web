@@ -47,7 +47,7 @@ end
   })
 
   company = Company.create!({
-    name: "#{Faker::Company.name}, #{Faker::Company.suffix}",
+    name: Faker::Company.name,
     headquarters_location: "#{Faker::Address.city}, #{Faker::Address.country}",
     headquarters_latitude: Faker::Address.latitude,
     headquarters_longitude: Faker::Address.longitude,

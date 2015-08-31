@@ -5,7 +5,7 @@ var Candidate = React.createClass({
   render: function() {
     var candidate = this.props.candidate;
     var name = candidate.first_name + ' ' + candidate.last_name;
-    var rate = '$' + candidate.hourly_rate + '/hour\n$' + candidate.yearly_rate + '/year';
+    var rate = '$' + numeral(candidate.hourly_rate).format('0,0') + '/hour\n$' + numeral(candidate.yearly_rate).format('0,0') + '/year';
     return (
       <div id="candidate">
         <div className="user">
@@ -33,11 +33,12 @@ var Candidate = React.createClass({
             </li>
             <li>
               <img src={"<%= asset_url('icon-sundial.svg') %>"} alt={name + "'s Experience"} />
-              <p>{candidate.years_experience} Years</p>
+              <p>{numeral(candidate.years_experience).format('0')} Years</p>
             </li>
             <li className={candidate.workplace_preference ? '' : 'hidden'}>
               <img src={"<%= asset_url('icon-location.svg') %>"} alt={name + "'s Location Preference"} />
-              <p>{candidate.workplace_preference}</p>
+              <p className="two-lines">{candidate.workplace_preference}</p>
+              <p className="small">{candidate.location_required ? 'Required' : 'Optional'}</p>
             </li>
           </ul>
           <div className="clear" />

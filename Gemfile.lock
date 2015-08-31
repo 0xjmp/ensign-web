@@ -182,6 +182,7 @@ GEM
     rails-assets-bean (1.0.14)
     rails-assets-flux (2.1.1)
     rails-assets-jquery (2.1.4)
+    rails-assets-numeral (1.5.3)
     rails-assets-object-assign-shim (1.0.0)
     rails-assets-swing (1.1.4)
     rails-deprecated_sanitizer (1.0.3)
@@ -308,6 +309,7 @@ DEPENDENCIES
   rails-assets-bean!
   rails-assets-flux!
   rails-assets-jquery!
+  rails-assets-numeral!
   rails-assets-object-assign-shim!
   rails-assets-swing!
   react-rails

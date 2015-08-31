@@ -19,6 +19,7 @@
 //= require bean
 //= require object-assign-shim
 //= require swing
+//= require numeral
 
 //= require api
 //= require_tree ./constants

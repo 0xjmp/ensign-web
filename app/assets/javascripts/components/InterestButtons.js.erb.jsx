@@ -1,7 +1,11 @@
 var InterestButtons = React.createClass({
+  propTypes: {
+    model: React.PropTypes.oneOf(['candidates', 'companies']).isRequired
+  },
   _handleClick: function(result) {
     AppDispatcher.dispatch({
-      type: CandidateConstants.ActionTypes.NEXT_CANDIDATE,
+      type: CardConstants.ActionTypes.NEXT_CARD,
+      model: this.props.model,
       result: result
     });
   },

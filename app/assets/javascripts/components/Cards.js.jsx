@@ -3,13 +3,17 @@ var Cards = React.createClass({
     cards: React.PropTypes.array.isRequired,
     model: React.PropTypes.oneOf(['candidates', 'companies']).isRequired
   },
-  componentWillMount: function() { 
+  getInitialState: function() { 
+    var state = CardStore.getState();
     if (this.props.cards) {
-      this.setState({cards: this.props.cards});
+      state.cards = this.props.cards;
     } else {
       this._fetchCards();
     }
 
+    return state;
+  },
+  componentWillMount: function() { 
     CardStore.addChangeListener(this._onChange);
   },
   componentWillUnmount: function() {  
@@ -31,7 +35,7 @@ var Cards = React.createClass({
   },
   _getNextCard: function(result) {
     AppDispatcher.dispatch({
-      actionType: CardConstants.ActionTypes.NEXT_CARD,
+      type: CardConstants.ActionTypes.NEXT_CARD,
       result: result,
       model: this.props.model
     });
@@ -61,7 +65,7 @@ var Cards = React.createClass({
               );
             })}
         </ul>
-        <InterestButtons result={this._getNextCard} />
+        <InterestButtons result={this._getNextCard} model={this.props.model} />
       </div>
     );
   }

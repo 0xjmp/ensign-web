@@ -5,7 +5,7 @@ var Company = React.createClass({
 	render: function() {
 		var job = this.props.job;
 		var company = this.props.job.company;
-		var rate = '$' + job.hourly_rate + '/hour\n$' + job.annual_rate + '/year';
+		var rate = '$' + numeral(job.hourly_rate).format('0,0.') + '/hour\n$' + numeral(job.annual_rate).format('0,0.') + '/year';
 		return (
 			<div id="candidate">
 				<div className="user">
@@ -33,7 +33,7 @@ var Company = React.createClass({
 							<p className="two-lines">{job.title}</p>
 							{(() => {
 								if (job.team_size > 0) {
-									return <p className="small">Team of {job.team_size}</p>
+									return <p className="small">Team of {numeral(job.team_size).format('0,0')}</p>
 								}
 							})()}
 						</li>
@@ -41,10 +41,10 @@ var Company = React.createClass({
 							<img src={"<%= asset_url('icon-company.svg') %>"} alt={company.name + "'s size"} />
 							{(() => {
 								if (company.employee_count > 0) {
-									return <p className="two-lines">{company.employee_count + " Employees"}</p>
+									return <p className="two-lines">{numeral(company.employee_count).format('0,0') + " Employees"}</p>
 								}
 							})()}
-							<p className="small">{'$' + company.funding_amount + ' ' + company.funding_round + "-Round"}</p>
+							<p className="small">{'$' + numeral(company.funding_amount).format('0A') + ' ' + company.funding_round + "-Round"}</p>
 						</li>
 						<li>
 							<img src={"<%= asset_url('icon-location.svg') %>"} alt={company.name + "'s Location Preference"} />
