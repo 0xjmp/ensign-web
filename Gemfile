@@ -61,6 +61,7 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-group :staging do 
+group :staging, :production do 
   gem 'pg'
+  gem 'rails_12factor'
 end
