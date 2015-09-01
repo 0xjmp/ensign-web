@@ -13,8 +13,9 @@ RSpec.describe CompaniesController, type: :controller do
 
     context 'while an employee of a company' do 
       before :each do 
-        company.employees << user
-        company.save!
+        user.employer = company
+        user.save!
+        user.reload
       end
       
       it 'redirects to candidates page' do 

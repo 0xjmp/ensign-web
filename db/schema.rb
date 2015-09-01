@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831234158) do
+ActiveRecord::Schema.define(version: 20150901215724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,15 +28,12 @@ ActiveRecord::Schema.define(version: 20150831234158) do
     t.string  "profile_image"
   end
 
-  create_table "companies_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "company_id"
-  end
-
   create_table "interests", force: :cascade do |t|
     t.boolean "result",            default: false
     t.integer "interestable_id"
     t.string  "interestable_type"
+    t.integer "company_id"
+    t.integer "user_id"
   end
 
   add_index "interests", ["interestable_type", "interestable_id"], name: "index_interests_on_interestable_type_and_interestable_id", using: :btree
@@ -104,6 +101,7 @@ ActiveRecord::Schema.define(version: 20150831234158) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "employer_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

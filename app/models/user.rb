@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
 
   has_many :social_media_profiles, as: :socialable
   has_and_belongs_to_many :skills
-  has_many :interests, as: :interestable
-  has_and_belongs_to_many :employers, class_name: 'Company'
+  has_many :interests
+  belongs_to :employer, class_name: 'Company'
 
   def potential_jobs(page=1)
     Job.includes(:company).page(page)
@@ -30,16 +30,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.find_candidates
-    all.sample(50)
-  end
-
   def as_json(opts=nil)
     super(include: [:social_media_profiles, :skills])
   end
 
   def is_employed?
-    employers.any?
+    !employer.nil?
   end
 
 end

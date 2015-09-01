@@ -11,23 +11,3 @@ var InterestStore = Object.assign({}, bean, {
     });
   }
 });
-
-InterestStore.dispatchToken = AppDispatcher.register(function(action) {
-  var ActionTypes = InterestConstants.ActionTypes;
-
-  switch (action.type) {
-
-    case ActionTypes.CREATE_INTEREST:
-      debugger;
-      InterestStore.createInterest(
-        action.model, 
-        action.id, 
-        action.result, 
-        action.callback
-      );
-      break;
-
-    default:
-      break;
-  }
-});

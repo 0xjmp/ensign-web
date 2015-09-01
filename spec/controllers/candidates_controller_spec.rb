@@ -16,8 +16,9 @@ RSpec.describe CandidatesController, type: :controller do
     describe '#index' do 
       context 'while user employed' do 
         before :each do
-          user.employers << create(:company)
+          user.employer = create(:company)
           user.save!
+          user.reload
 
           get :index
         end

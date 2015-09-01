@@ -14,8 +14,9 @@ RSpec.describe WelcomeController, type: :controller do
 
 			context 'as employee' do 
 				before :each do 
-					company.employees << user
-					company.save!
+					user.employer = company
+					user.save!
+					user.reload
 				end
 
 				it 'redirects to company page' do 

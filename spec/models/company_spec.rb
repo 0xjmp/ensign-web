@@ -15,6 +15,7 @@ RSpec.describe Company, type: :model do
   it { is_expected.to respond_to(:profile_image) }
   it { is_expected.to respond_to(:employees) }
   it { is_expected.to respond_to(:interests) }
+  it { is_expected.to respond_to(:find_candidates) }
 
   describe 'description' do 
     it { is_expected.to respond_to(:description) }

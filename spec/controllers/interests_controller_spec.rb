@@ -15,16 +15,28 @@ RSpec.describe InterestsController, type: :controller do
 
       it 'responds w/ 204' do 
         expect(subject).to have_http_status :created
+        expect(user.interests.count).to be > 0
       end
 
     end
 
-    context 'while company' do 
+    context 'while user is employed' do 
       let(:company){create(:company)}
-      subject {post :create, company_id: company.id, result: false, format: :json}
+
+      before :each do 
+        user.employer = company
+        user.save!
+        user.reload
+
+        post :create, company_id: company.id, result: false, format: :json
+      end
 
       it 'responds w/ 204' do 
-        expect(subject).to have_http_status :created
+        expect(response).to have_http_status :created
+      end
+
+      it 'has interests' do 
+        expect(company.interests.count).to be > 0
       end
 
     end
