@@ -4,6 +4,7 @@ class Company < ActiveRecord::Base
 
 	mount_uploader :profile_image, ProfileImageUploader
 
+  has_many :interests, as: :interestable
 	has_many :jobs
 	has_many :social_media_profiles, as: :socialable
 

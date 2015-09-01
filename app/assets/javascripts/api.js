@@ -21,7 +21,7 @@ function _getCookie(cname) {
 }
 
 function _errorHandler(error) {
-  debugger;
+  // TODO: Dispatch "ErrorStore"
   switch (error.status) {
     case 404:
       break;

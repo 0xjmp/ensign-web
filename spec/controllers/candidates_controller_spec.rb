@@ -31,7 +31,7 @@ RSpec.describe CandidatesController, type: :controller do
         subject {get :index}
         
         it 'redirects to companies page' do 
-          expect(response).to redirect_to companies_path
+          expect(subject).to redirect_to companies_path
         end
       end
     end

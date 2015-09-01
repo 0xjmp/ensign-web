@@ -6,6 +6,10 @@ FactoryGirl.define do
     "User #{i}"
   end
 
+  sequence :email do |i|
+    "#{Faker::Internet.email}#{i}"
+  end
+
   factory :user do
     first_name 'Test'
     last_name {generate(:last_name)}
@@ -15,7 +19,7 @@ FactoryGirl.define do
     years_experience 6
     location 'Los Angeles, CA'
     workplace_preference 'Remote'
-    email Faker::Internet.email
+    email {generate(:email)}
     password Faker::Internet.password
   end
 

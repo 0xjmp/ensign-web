@@ -42,9 +42,9 @@ var CardStore = Object.assign({}, bean, {
     });
   },
 
-  sendResults: function(model, callback) {
-    _api.setParams({results: _interests});
-    _api.request('post', '/' + model + '/results.json', function(response) {
+  sendResults: function(callback) {
+    _api.setParams({results: _state.interests});
+    _api.request('put', '/interests.json', function(response) {
       _state.interests = [];
       callback();
     });
@@ -62,8 +62,8 @@ var CardStore = Object.assign({}, bean, {
         CardStore.fetchCards(_state.page);
       };
 
-      if (Object.keys(_interests).length > 0) {
-        CardStore.sendResults(model, function() {
+      if (Object.keys(_state.interests).length > 0) {
+        CardStore.sendResults(function() {
           fetchNext();
         });
       } else {
