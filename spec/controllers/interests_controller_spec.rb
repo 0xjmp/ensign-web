@@ -22,13 +22,14 @@ RSpec.describe InterestsController, type: :controller do
 
     context 'while user is employed' do 
       let(:company){create(:company)}
+      let(:job){create(:job, company: company)}
 
       before :each do 
         user.employer = company
         user.save!
         user.reload
 
-        post :create, company_id: company.id, result: false, format: :json
+        post :create, company_id: job.id, result: false, format: :json
       end
 
       it 'responds w/ 204' do 

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :interests, only: [:create], format: :json
   end
 
-  resources :companies, only: [:index] do
+  resources :companies, only: [:index] do 
     resources :interests, only: [:create], format: :json
   end
 end
