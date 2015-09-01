@@ -33,10 +33,6 @@ describe 'CardStore', ->
       expect(state.cards).toEqual([])
       return
 
-    it 'has interests', ->
-      expect(state.interests).toEqual({})
-      return
-
     it 'has page', ->
       expect(state.page).toEqual(1)
       return

@@ -1,4 +1,4 @@
-var _baseUrl = '/api';
+var _baseUrl = '';
 
 function _extractData(response) {
   // Custom data extractor for our back-end
@@ -50,7 +50,7 @@ ApiRequest.prototype.request = function(method, path, callback) {
   var url = _baseUrl + path;
   $.ajax({
     headers: {
-      'XSRF-TOKEN': _getCookie('XSRF-TOKEN')
+      'X-XSRF-TOKEN': _getCookie('XSRF-TOKEN')
     },
     url: _baseUrl + path,
     type: method.toUpperCase(),

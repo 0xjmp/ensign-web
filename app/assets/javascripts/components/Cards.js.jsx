@@ -4,13 +4,9 @@ var Cards = React.createClass({
     model: React.PropTypes.oneOf(['candidates', 'companies']).isRequired
   },
   getInitialState: function() { 
+    // Sync w/ Flux
     var state = CardStore.getState();
-    if (this.props.cards) {
-      state.cards = this.props.cards;
-    } else {
-      this._fetchCards();
-    }
-
+    state.cards = this.props.cards;
     return state;
   },
   componentWillMount: function() { 
@@ -26,19 +22,6 @@ var Cards = React.createClass({
   },
   _onChange: function() {
     this.setState(CardStore.getState());
-  },
-  _fetchCards: function() {
-    AppDispatcher.dispatch({
-      type: CardConstants.ActionTypes.GET_CARDS,
-      model: this.props.model
-    });
-  },
-  _getNextCard: function(result) {
-    AppDispatcher.dispatch({
-      type: CardConstants.ActionTypes.NEXT_CARD,
-      result: result,
-      model: this.props.model
-    });
   },
   render: function() {
     var cards = this.props.cards;
@@ -65,7 +48,7 @@ var Cards = React.createClass({
               );
             })}
         </ul>
-        <InterestButtons result={this._getNextCard} model={this.props.model} />
+        <InterestButtons model={this.props.model} />
       </div>
     );
   }

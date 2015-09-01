@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
 
+  skip_before_action :verify_authenticity_token, if: :json_request?
   after_filter :set_csrf_cookie
 
   def set_csrf_cookie
@@ -13,5 +14,11 @@ class ApplicationController < ActionController::Base
 
   def verified_request?
     super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
+  end
+
+  protected
+
+  def json_request?
+    request.format.json?
   end
 end
