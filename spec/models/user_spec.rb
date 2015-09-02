@@ -12,6 +12,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to respond_to(:is_employed?) }
   it { is_expected.to respond_to(:potential_jobs) }
   it { is_expected.to respond_to(:interests) }
+  it { is_expected.to respond_to(:skills) }
 
   it 'has name' do 
     expect(user.name).to eq user.first_name + user.last_name

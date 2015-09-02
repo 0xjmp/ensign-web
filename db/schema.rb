@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901215724) do
+ActiveRecord::Schema.define(version: 20150902163940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,12 +50,6 @@ ActiveRecord::Schema.define(version: 20150901215724) do
     t.string  "workplace_preference"
   end
 
-  create_table "skills", force: :cascade do |t|
-    t.string "title"
-    t.string "color"
-    t.float  "amount", default: 0.0
-  end
-
   create_table "skills_users", force: :cascade do |t|
     t.integer "skill_id"
     t.integer "user_id"
@@ -74,6 +68,26 @@ ActiveRecord::Schema.define(version: 20150901215724) do
   end
 
   add_index "social_media_profiles", ["socialable_type", "socialable_id"], name: "social_media_profiles_on_socialable", using: :btree
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

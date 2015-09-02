@@ -8,14 +8,16 @@ class User < ActiveRecord::Base
   mount_uploader :profile_image, ProfileImageUploader
 
   has_many :social_media_profiles, as: :socialable
-  has_and_belongs_to_many :skills
+  
   has_many :interests
   belongs_to :employer, class_name: 'Company'
 
+  acts_as_taggable_on :skills
+
   def potential_jobs(page=1)
-    Job.page(page).includes(company: :social_media_profiles).select { |job|
+    Job.page(page).includes(company: :social_media_profiles).select do |job|
       !interests.include? job
-    }
+    end
   end
 
   def hourly_rate

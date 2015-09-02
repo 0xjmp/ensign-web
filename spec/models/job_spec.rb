@@ -11,5 +11,6 @@ RSpec.describe Job, type: :model do
 	it { is_expected.to respond_to(:title) }
 	it { is_expected.to respond_to(:team_size) }
 	it { is_expected.to respond_to(:description) }
+  it { is_expected.to respond_to(:desired_skills) }
 
 end

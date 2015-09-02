@@ -4,17 +4,16 @@ ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
-# Use sqlite3 as the database for Active Record
-gem 'virtus'
 
-# Use SCSS for stylesheets
+# bundle exec rake doc:rails generates the API under doc/api.
+gem 'sdoc', '~> 0.4.0', group: :doc
+
+gem 'virtus'
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'fog'
 gem 'fog-aws'
 gem 'carrierwave'
@@ -27,6 +26,7 @@ gem 'react-rails'
 gem 'font-awesome-rails'
 gem 'sidekiq'
 gem 'newrelic_rpm'
+gem 'acts-as-taggable-on'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -48,12 +48,11 @@ source rails_assets_url do
   gem 'rails-assets-numeral'
 end
 
-gem 'pry'
 group :development, :test do
   gem 'sqlite3'
   gem 'spring'
   gem 'rspec-rails'
-  
+  gem 'pry'
   gem 'factory_girl_rails'
   gem 'teaspoon-jasmine'
   gem 'guard'
