@@ -7,13 +7,12 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body
-	  .container
-			.row
-				.col-md-12
-					- unless user_signed_in?
-						header#header
-							a href="/"
-								.logo
-					= react_component('MessageBanner', {notice: notice, alert: alert}, prerender: true)
-					#main-wrapper
-						= yield
+    .container
+      .row.col-md-12
+        - unless user_signed_in?
+          header#header
+            a href="/"
+              .logo
+        = react_component('MessageBanner', {notice: notice, alert: alert}, prerender: true)
+        #main-wrapper
+          = yield

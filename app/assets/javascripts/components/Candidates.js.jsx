@@ -7,7 +7,7 @@ var Candidates = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className="row">
         <Cards cards={this.props.candidates} model={this.props.model} />
         <InterestButtons model={this.props.model} />
       </div>

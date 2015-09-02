@@ -7,7 +7,7 @@ var Companies = React.createClass({
 	},
 	render: function() {
 		return (
-      <div>
+      <div className="row">
         <Cards cards={this.props.jobs} model={this.props.model} />
         <InterestButtons model={this.props.model} />
       </div>
