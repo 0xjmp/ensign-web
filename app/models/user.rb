@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :skills
 
   def potential_jobs(page=1)
-    Job.page(page).includes(company: :social_media_profiles).select do |job|
-      !interests.include? job
+    Job.page(page).includes(company: :social_media_profiles).reject do |job|
+      interests.where(interestable: job).any?
     end
   end
 
