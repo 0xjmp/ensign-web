@@ -13,6 +13,6 @@ html
           header#header
             a href="/"
               .logo
-        = react_component('MessageBanner', {notice: notice, alert: alert}, prerender: true)
+        = react_component('MessageBanner', {notice: notice, alert: alert})
         #main-wrapper
           = yield
