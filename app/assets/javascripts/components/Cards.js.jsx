@@ -15,11 +15,6 @@ var Cards = React.createClass({
   componentWillUnmount: function() {  
     CardStore.removeChangeListener(this._onChange);
   },
-  componentDidMount: function() {
-    AppDispatcher.dispatch({
-      type: CardConstants.ActionTypes.SETUP_CARDS
-    });
-  },
   _onChange: function() {
     this.setState(CardStore.getState());
   },
