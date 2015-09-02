@@ -63,6 +63,7 @@ group :development, :test do
   gem 'faker', '~> 1.4.3'
   gem 'capybara'
   gem 'dotenv-rails'
+  gem 'foreman'
 end
 
 group :staging, :production do 

@@ -13,7 +13,7 @@ var Skills = React.createClass({
                 <div className="progress-bar">
                   <span style={skillStyles} />
                 </div>
-                <p>{skill.title}</p>
+                <p>{skill.name}</p>
               </li>
             );
           })}

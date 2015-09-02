@@ -8,21 +8,13 @@
 
 require 'faker'
 
-skill_file = File.open("data/skills.json")
-skills_json = JSON.parse(skill_file.read)
-skill_file.close
-skills_json.each do |skill|
-  Skill.create!(skill)
-  puts "Created skill: #{skill["title"]}"
-end
+skills = %w(JavaScript HTML CSS Ruby Python Go Rust Java Objective-C Swift Management)
 
-(1..75).each do |i|
-
+(1..88).each do |i|
   user = User.create!({
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    skills: Skill.all,
-    remote_profile_image_url: Faker::Avatar.image,
+    remote_profile_image_url: 'http://lorempixel.com/300/300', # Faker::Avatar.image,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     hourly_rate: Faker::Number.decimal(2),
@@ -31,6 +23,7 @@ end
     years_experience: Faker::Number.between(1, 10),
     location: "#{Faker::Address.city}, #{Faker::Address.country}",
     workplace_preference: ['Remote', 'On Site'].sample,
+    skill_list: skills.sample(rand(0..skills.count-1)).join(',')
   })
   puts "Created user: #{user.first_name}"
 
@@ -53,7 +46,7 @@ end
     headquarters_longitude: Faker::Address.longitude,
     employee_count: Faker::Number.between(1, 10000),
     funding_amount: Faker::Number.between(25000, 1000000000),
-    remote_profile_image_url: Faker::Avatar.image,
+    remote_profile_image_url: 'http://lorempixel.com/300/300', # Faker::Avatar.image,
     funding_round: 'B'
   })
 
@@ -81,7 +74,8 @@ end
       title: Faker::Name.title,
       team_size: Faker::Number.between(1, 1000),
       description: Faker::Lorem.paragraph,
-      workplace_preference: ['Remote', 'On Site'].sample
+      workplace_preference: ['Remote', 'On Site'].sample,
+      desired_skill_list: skills.sample(rand(0..skills.count-1)).join(',')
     })
     puts "Created Job: #{job.title}"
   end
