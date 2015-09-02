@@ -6,6 +6,11 @@ var Companies = React.createClass({
 		return {model: 'companies'};
 	},
 	render: function() {
-		return <Cards cards={this.props.jobs} model={this.props.model} />;
+		return (
+      <div>
+        <Cards cards={this.props.jobs} model={this.props.model} />
+        <InterestButtons model={this.props.model} />
+      </div>
+    );
 	}
 });

@@ -22,29 +22,26 @@ var Cards = React.createClass({
     var cards = this.props.cards;
     var model = this.props.model;
     return (
-      <div>
-        <ul className="cards-wrapper">
-            {cards.map(function(card) {
-              return (
-                <li key={card.id} className="card">
-                  {(() => {
-                    switch (model) {
-                      case 'candidates':
-                        return <Candidate candidate={card} />;
+      <ul className="cards-wrapper">
+          {cards.map(function(card) {
+            return (
+              <li key={card.id} className="card">
+                {(() => {
+                  switch (model) {
+                    case 'candidates':
+                      return <Candidate candidate={card} />;
 
-                      case 'companies':
-                        return <Company job={card} />;
+                    case 'companies':
+                      return <Company job={card} />;
 
-                      default:
-                        break;
-                    }
-                  })()}
-                </li>
-              );
-            })}
-        </ul>
-        <InterestButtons model={this.props.model} />
-      </div>
+                    default:
+                      break;
+                  }
+                })()}
+              </li>
+            );
+          })}
+      </ul>
     );
   }
 });

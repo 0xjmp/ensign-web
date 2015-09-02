@@ -13,9 +13,9 @@ class User < ActiveRecord::Base
   belongs_to :employer, class_name: 'Company'
 
   def potential_jobs(page=1)
-    Job.includes(company: :social_media_profiles).select do |job|
+    Job.page(page).includes(company: :social_media_profiles).select { |job|
       !interests.include? job
-    end
+    }
   end
 
   def hourly_rate
