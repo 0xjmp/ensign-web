@@ -11,9 +11,8 @@ class Company < ActiveRecord::Base
 	has_many :employees, class_name: 'User'
 
   def find_candidates
-    user_interests = interests.where(interestable_type: 'User')
-    User.select do |user|
-      !user_interests.include? user
+    User.includes(:social_media_profiles).reject do |user|
+      interests.where(interestable: user).any?
     end
   end
 

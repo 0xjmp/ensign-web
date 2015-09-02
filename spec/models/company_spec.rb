@@ -29,4 +29,43 @@ RSpec.describe Company, type: :model do
     end
   end
 
+  describe 'find_candidates' do 
+    let(:user){create(:user)}
+    let(:users){create_list(:user, 2)}
+    let(:already_seen_users){create_list(:user, 2)}
+
+    before :each do 
+      users.each do |u|
+        u.save!
+      end
+    end
+
+    context 'while company has interests' do 
+
+      before :each do 
+        already_seen_users.each do |u|
+          Interest.create!(
+            interestable: u,
+            user: user,
+            company: company
+          )
+        end
+        already_seen_users.each {|u| u.save!}
+      end
+
+      it 'finds unique candidates' do 
+        expect(company.find_candidates.count).to eq users.push(user).count
+      end
+    end
+
+    context 'while company has no interests' do 
+      before :each do 
+        already_seen_users.each {|u| u.save!}
+      end
+
+      it 'finds candidates' do
+        expect(company.find_candidates.count).to eq users.count + already_seen_users.count
+      end
+    end
+  end
 end
