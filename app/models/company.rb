@@ -11,9 +11,11 @@ class Company < ActiveRecord::Base
 	has_many :employees, class_name: 'User'
 
   def find_candidates
-    User.includes(:social_media_profiles).reject do |user|
+    User.includes(:social_media_profiles).reject { |user|
       interests.where(interestable: user).any?
-    end
+    }.map { |user|
+      user.find_related_skills
+    }.flatten.uniq
   end
 
 end

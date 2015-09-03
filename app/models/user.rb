@@ -15,9 +15,11 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :skills
 
   def potential_jobs(page=1)
-    Job.page(page).includes(company: :social_media_profiles).reject do |job|
+    Job.page(page).reject { |job|
       interests.where(interestable: job).any?
-    end
+    }.map { |job|
+      job.find_related_desired_skills
+    }.flatten.uniq
   end
 
   def hourly_rate
