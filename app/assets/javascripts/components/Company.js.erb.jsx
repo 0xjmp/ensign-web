@@ -37,6 +37,7 @@ var Company = React.createClass({
               <p className="two-lines">{rate}</p>
               <p className="small">Competitive</p>
             </li>
+            <div className="grid-spacer"></div>
             <li>
               <img src={"<%= asset_url('icon-location.svg') %>"} alt={company.name + "'s Location Preference"} />
               <p className="two-lines">{job.workplace_preference}</p>

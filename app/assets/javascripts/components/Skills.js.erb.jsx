@@ -4,7 +4,7 @@ var Skills = React.createClass({
   },
   render: function() {
     return (
-      <div id="skills">
+      <div id="skills" className="skills">
         <ul>
           {this.props.skills.map(function(skill) {
             var skillStyles = {width: (skill.amount * 100) + "%"};

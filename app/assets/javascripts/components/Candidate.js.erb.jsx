@@ -31,6 +31,7 @@ var Candidate = React.createClass({
               <img src={"<%= asset_url('icon-education.svg') %>"} alt={name + "'s Education"} />
               <p>{candidate.education}</p>
             </li>
+            <div className="grid-spacer"></div>
             <li>
               <img src={"<%= asset_url('icon-sundial.svg') %>"} alt={name + "'s Experience"} />
               <p>{numeral(candidate.years_experience).format('0')} Years</p>

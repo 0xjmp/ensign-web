@@ -92,6 +92,10 @@ body {
 	color: $dark-gray;
 }
 
+.container, .row {
+	height: 100%;
+}
+
 section {
 	padding: 15px 0 100px;
 }
@@ -107,12 +111,18 @@ section {
 	font-weight: 700;
 }
 
-.alert {
-	background: mix(red,$col-a,20%);
+.alert, .notice {
 	border-radius: 2px;
 	color: white;
 	font-weight: 600;
-	text-align: center;
+}
+
+.alert {
+	background: $red;
+}
+
+.notice {
+	background: $green;
 }
 
 h1, h2 {
@@ -151,6 +161,11 @@ p, ul {
   min-width: $minViewport;
   max-width: $maxViewport;
   margin: 0 auto;
+  height: 100%;
+  
+  div:first-child {
+	  height: 100%;
+  }
 }
 
 .layout-holder {
@@ -195,7 +210,6 @@ p, ul {
       height: 50%;
       float: left;
       margin: 0;
-      padding: 5px 15px;
       list-style-type: none;
 
       img {
@@ -298,6 +312,8 @@ p, ul {
 }
 
 .profile-image-wrapper {
+  height: auto !important;
+  
   img {
     margin-right: auto;
     margin-left: auto;
